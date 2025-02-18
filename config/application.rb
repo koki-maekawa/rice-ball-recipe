@@ -23,5 +23,16 @@ module App
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.generators do |g|
+      g.assets false             # JavaScriptやCSSなどのアセット関連ファイルを生成しない
+      g.helper false             # ヘルパーファイルを生成しない
+      g.test_framework :rspec,   # テストフレームワークとしてRSpecを使用
+        fixtures: false,         # テスト用のfixtureファイルを生成しない
+        view_specs: false,       # ビューのテストスペックファイルを生成しない
+        helper_specs: false,     # ヘルパーのテストスペックファイルを生成しない
+        routing_specs: false,    # ルーティングのテストスペックファイルを生成しない
+        request_specs: false     # リクエストのテストスペックファイルを生成しない
+    end
   end
 end
