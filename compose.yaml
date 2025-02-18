@@ -1,0 +1,44 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: "Dockerfile.dev"
+    stdin_open: true
+    tty: true
+    ports:
+      - 3000:3000
+    command: /bin/sh -c "bundle install && yarn install && rm -f tmp/pids/server.pid && bin/dev"
+    environment:
+      DB_USER: postgres
+      DB_PASS: postgres
+      DB_HOST: postgres
+      DB_PORT: 5432
+      SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
+    depends_on:
+      - postgres
+      - selenium_chrome
+    volumes:
+      - .:/app
+      - node-modules:/app/node_modules
+      - bundle-data:/usr/local/bundle
+
+  postgres:
+    image: postgres:16.2
+    stdin_open: true
+    tty: true
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgsql-data:/var/lib/postgresql/data
+
+  selenium_chrome:
+    image: seleniarm/standalone-chromium:4.17.0
+    ports:
+      - '4444:4444'
+      
+volumes:
+  pgsql-data:
+  bundle-data:
+  node-modules:
