@@ -48,8 +48,8 @@ group :development, :test do
   gem "rubocop-rspec", require: false
 
   # erb styling
-  gem 'erb_lint', require: false
-	gem 'htmlbeautifier', require: false
+  gem "erb_lint", require: false
+  gem "htmlbeautifier", require: false
 end
 
 group :development do
