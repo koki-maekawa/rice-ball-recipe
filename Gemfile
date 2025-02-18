@@ -50,6 +50,10 @@ group :development, :test do
   # erb styling
   gem "erb_lint", require: false
   gem "htmlbeautifier", require: false
+
+  # test
+  gem "rspec-rails"       
+  gem "factory_bot_rails" 
 end
 
 group :development do
@@ -61,4 +65,5 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "faker"
 end
