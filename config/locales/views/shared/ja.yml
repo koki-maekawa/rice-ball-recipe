@@ -1,0 +1,13 @@
+ja:
+  shared:
+    header:
+      login: "ログイン"
+    footer:
+      terms_of_service: "利用規約"
+      contact: "お問い合わせ"
+    sidebar:
+      create_rice_ball: "おにぎりを作る"
+      search_rice_ball: "おにぎりを探す"
+      shef: "シェフ"
+      ranking: "ランキング"
+      my_page: "マイページ"
