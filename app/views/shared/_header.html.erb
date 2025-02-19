@@ -4,7 +4,7 @@
       <%= link_to root_path, class: "navbar-brand" do %>
         <%= image_tag "onigiri.png", alt: "Onigiri logo", class: "h-8 w-8" %>
       <% end %>
-      <%= link_to t("shared.header.login"), "#", class: "btn btn-outline btn-primary" %>
+      <%= link_to t("shared.header.login"), new_user_session_path, class: "btn btn-outline btn-primary" %>
     </div>
   </nav>
 </header>
