@@ -34,5 +34,9 @@ module App
         routing_specs: false,    # ルーティングのテストスペックファイルを生成しない
         request_specs: false     # リクエストのテストスペックファイルを生成しない
     end
+
+    # 日本語に設定する
+    config.i18n.default_locale = :ja
+    config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}").to_s]
   end
 end
