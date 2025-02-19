@@ -54,11 +54,18 @@ group :development, :test do
   # test
   gem "rspec-rails"
   gem "factory_bot_rails"
+
+  # login
+  gem "devise"
+  gem "devise-i18n"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # mail check
+  gem "letter_opener_web"
 end
 
 group :test do
