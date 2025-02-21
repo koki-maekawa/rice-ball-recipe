@@ -19,6 +19,7 @@ services:
       - selenium_chrome
     volumes:
       - .:/app
+      - ./app/tmp/capybara:/app/tmp/capybara
       - node-modules:/app/node_modules
       - bundle-data:/usr/local/bundle
 
