@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: "static_pages#top"
 
-  devise_for :users, skip: [:unlocks], controllers: {
-    registrations: 'users/registrations'
+  devise_for :users, skip: [ :unlocks ], controllers: {
+    registrations: "users/registrations"
   }
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

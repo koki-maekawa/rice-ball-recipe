@@ -7,3 +7,9 @@ require:
 
 Metrics/BlockLength:
   Max: 30
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 8
