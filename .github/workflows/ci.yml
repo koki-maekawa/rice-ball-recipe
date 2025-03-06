@@ -40,7 +40,9 @@ jobs:
       - name: Lint erbCode for consistent style
         run: |
           bundle exec htmlbeautifier app/views/*/*.html.erb
+          bundle exec htmlbeautifier app/views/*/*/*.html.erb
           bundle exec erb_lint app/views/*/*.html.erb
+          bundle exec erb_lint app/views/*/*/*.html.erb
 
   test:
     runs-on: ubuntu-latest
