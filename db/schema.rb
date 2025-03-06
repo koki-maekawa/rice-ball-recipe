@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_06_053149) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_06_053349) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,6 +60,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_06_053149) do
     t.index ["user_id"], name: "index_rice_balls_on_user_id"
   end
 
+  create_table "steps", force: :cascade do |t|
+    t.bigint "rice_ball_id", null: false
+    t.text "description", null: false
+    t.integer "step_number", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rice_ball_id"], name: "index_steps_on_rice_ball_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -77,4 +86,5 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_06_053149) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "ingredients", "rice_balls"
   add_foreign_key "rice_balls", "users"
+  add_foreign_key "steps", "rice_balls"
 end
