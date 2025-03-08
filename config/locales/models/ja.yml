@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      rice_ball: "おにぎりレシピ"
+      ingredient: "材料・調味料"
+      step: "作り方"
+    attributes:
+      rice_ball:
+        title: "おにぎりのタイトル"
+        image: "画像"
+      ingredient:
+        name: "材料・調味料"
+        amount: "量"
+      step:
+        description: "作り方"
+
