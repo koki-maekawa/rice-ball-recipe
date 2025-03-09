@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :step do
-    rice_ball { nil }
-    description { "MyText" }
-    step_number { 1 }
+    description { Faker::Lorem.sentence }
+    sequence(:step_number) { |n| n }
+    rice_ball
   end
 end
