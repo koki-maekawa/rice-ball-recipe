@@ -1,0 +1,11 @@
+ja:
+  defaults:
+    add_ingredient_form: '材料追加'
+    ingredient_name_placeholder: 'ごはん'
+    ingredient_amount_placeholder: '150g'
+    add_step_form: '作り方追加'
+    step_description_placeholder: 'おにぎりを握る'
+    recipe_submit: 'レシピを保存'
+  rice_balls:
+    create:
+      success: 'おにぎりレシピの投稿が成功しました'

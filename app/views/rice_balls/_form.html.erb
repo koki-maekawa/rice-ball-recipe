@@ -1,0 +1,49 @@
+<%= form_with(model: recipe_form, url: recipe_form.persisted? ? rice_ball_path(recipe_form) : rice_balls_path, class: "card bg-base-100 shadow-xl p-12 gap-6", id: "form_errors")  do |form| %>
+  <%= form.fields_for(:rice_ball_attributes, recipe_form.rice_ball) do |rice_ball_fields| %>
+    <div class="form-control">
+      <%= rice_ball_fields.label :title, class: "label text-xl font-bold" %>
+      <%= rice_ball_fields.text_area :title, class: "input input-bordered w-full" %>
+    </div>
+    <div class="form-control">
+      <%= rice_ball_fields.label :image, class: "label text-xl font-bold" %>
+      <%= rice_ball_fields.file_field :image, class: "file-input file-input-bordered w-full" %>
+    </div>
+  <% end %>
+  <div class="flex gap-4">
+    <div class="w-full" data-controller="ingredient-forms">
+      <div class="text-lg font-semibold"><%= Ingredient.model_name.human %></div>
+      <template data-ingredient-forms-target="Template">
+        <%= form.fields_for(:ingredients_attributes, Ingredient.new, index: "RECORD") do |f| %>
+          <%= render "ingredient_fields", f: f %>
+        <% end %>
+      </template>
+      <% recipe_form.ingredients&.each do |ingredient| %>
+        <%= form.fields_for(:ingredients_attributes, ingredient, index: "RECORD") do |f| %>
+          <%= render "ingredient_fields", f: f %>
+        <% end %>
+      <% end %>
+      <div data-ingredient-forms-target="addIngredientFormArea">
+        <%= link_to t("defaults.add_ingredient_form"), "#", data: { action: "click->ingredient-forms#addIngredientForm" }, class: "btn btn-block w-full mt-6" %>
+      </div>
+    </div>
+    <div class="w-full" data-controller="step-forms">
+      <div class="text-lg font-semibold"><%= Step.model_name.human %></div>
+      <template data-step-forms-target="Template">
+        <%= form.fields_for(:steps_attributes, Step.new, index: "RECORD") do |f| %>
+          <%= render "step_fields", f: f %>
+        <% end %>
+      </template>
+      <% recipe_form.steps&.each do |step| %>
+        <%= form.fields_for(:steps_attributes, step, index: "RECORD") do |f| %>
+          <%= render "step_fields", f: f %>
+        <% end %>
+      <% end %>
+      <div data-step-forms-target="addStepFormArea">
+        <%= link_to t("defaults.add_step_form"), "#", data: { action: "click->step-forms#addStepForm" }, class: "btn btn-block w-full mt-6" %>
+      </div>
+    </div>
+  </div>
+  <div class="mt-6 flex justify-end">
+    <%= form.submit t("defaults.recipe_submit"), class: "btn btn-primary w-32" %>
+  </div>
+<% end %>

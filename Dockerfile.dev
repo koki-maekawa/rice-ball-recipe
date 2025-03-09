@@ -10,7 +10,7 @@ RUN ln -fs /opt/yarn/bin/yarn /usr/local/bin/yarn \
 && ln -fs /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
 && ln -fs /usr/local/lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx
 
-RUN apk add --no-cache git build-base libxml2-dev libxslt-dev postgresql-dev postgresql-client tzdata bash vim
+RUN apk add --no-cache git build-base libxml2-dev libxslt-dev postgresql-dev postgresql-client tzdata bash vim vips libvips
 
 ENV APP_ROOT /app
 RUN mkdir $APP_ROOT

@@ -22,7 +22,7 @@ jobs:
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bin/brakeman --no-pager
 
-  lint:
+  lint_ruby:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -40,7 +40,29 @@ jobs:
       - name: Lint erbCode for consistent style
         run: |
           bundle exec htmlbeautifier app/views/*/*.html.erb
+          bundle exec htmlbeautifier app/views/*/*/*.html.erb
           bundle exec erb_lint app/views/*/*.html.erb
+          bundle exec erb_lint app/views/*/*/*.html.erb
+
+  lint_js:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Lint JavaScript code with ESLint
+        run: |
+          yarn eslint app/javascript/*.js
+          yarn eslint app/javascript/*/*.js
 
   test:
     runs-on: ubuntu-latest
