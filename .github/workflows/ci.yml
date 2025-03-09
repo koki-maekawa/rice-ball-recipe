@@ -61,8 +61,8 @@ jobs:
 
       - name: Lint JavaScript code with ESLint
         run: |
-          eslint app/javascript/*.js
-          eslint app/javascript/*/*.js
+          yarn eslint app/javascript/*.js
+          yarn eslint app/javascript/*/*.js
 
   test:
     runs-on: ubuntu-latest
