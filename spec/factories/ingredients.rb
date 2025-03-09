@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :ingredient do
-    rice_ball { nil }
-    name { "MyString" }
-    amount { "MyString" }
+    name { Faker::Food.ingredient }
+    amount { Faker::Food.measurement }
+    rice_ball
   end
 end
