@@ -9,3 +9,5 @@ ja:
   rice_balls:
     create:
       success: 'おにぎりレシピの投稿が成功しました'
+    show:
+      created_by: '作成者'

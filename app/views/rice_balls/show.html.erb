@@ -1,2 +1,43 @@
-<h1>RiceBalls#show</h1>
-<p>Find me in app/views/rice_balls/show.html.erb</p>
+<div class="container mx-auto bg-base-100 shadow-xl p-12 rounded-xl">
+  <div class="flex gap-8">
+    <% if @rice_ball.image.attached? %>
+      <figure class="w-1/3">
+        <%= image_tag @rice_ball.image.variant(:show), class: "w-94 h-64" %>
+      </figure>
+    <% else %>
+      <figure class="w-1/3">
+        <%= image_tag "onigiri.png", class: "w-94 h-64" %>
+      </figure>
+    <% end %>
+    <div class="w-2/3 gap-4">
+      <h2 class="text-3xl font-bold"><%= @rice_ball.title %></h2>
+      <h3 class="text-xl font-bold"><%= t(".created_by")%> <%= @rice_ball.user.name %></h3>
+    </div>
+  </div>
+  <div class="mt-8 flex gap-8">
+    <div class="w-1/3">
+      <h3 class="text-2xl font-semibold"><%= Ingredient.model_name.human %></h3>
+      <ul class="list-none">
+        <% @rice_ball.ingredients.each do |ingredient| %>
+          <li class="flex justify-between items-center py-2 border-b">
+            <span class="text-2xl"><%= ingredient.name %></span>
+            <span class="text-2xl"><%= ingredient.amount %></span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <% if @rice_ball.steps.present? %>
+      <div class="w-2/3">
+        <h3 class="text-2xl font-semibold"><%= Step.model_name.human %></h3>
+        <ul class="list-none">
+          <% @rice_ball.steps.order(:step_number).each do |step| %>
+            <li class="flex items-center py-2 border-b gap-4">
+              <span class="text-2xl"><%= step.step_number %></span>
+              <span class="text-2xl"><%= step.description %></span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>
