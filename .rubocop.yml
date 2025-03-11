@@ -13,3 +13,15 @@ RSpec/LetSetup:
 
 RSpec/ExampleLength:
   Max: 8
+
+RSpec/NestedGroups:
+  Max: 4
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 40

@@ -1,0 +1,13 @@
+<a href="<%= rice_ball_path(rice_ball) %>" class="card w-80 bg-base-100 shadow-xl hover:border-primary hover:border">
+  <figure>
+    <% if rice_ball.image.attached? %>
+      <%= image_tag rice_ball.image.variant(:index), class: "w-full h-64" %>
+    <% else %>
+      <%= image_tag "onigiri.png", class: "w-full h-64" %>
+    <% end %>
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title text-2xl font-bold"><%= rice_ball.title %></h2>
+    <p class="text-gray-700"><%= rice_ball.description %></p>
+  </div>
+</a>

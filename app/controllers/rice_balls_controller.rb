@@ -1,10 +1,14 @@
 class RiceBallsController < ApplicationController
   before_action :set_user, only: %i[new create]
+  before_action :authenticate_user!, except: [ :index, :show ]
 
   def index
+    @q = RiceBall.ransack(params[:q])
+    @rice_balls = @q.result(distinct: true).includes(:ingredients).page(params[:page]).per(8)
   end
 
   def show
+    @rice_ball = RiceBall.find(params[:id])
   end
 
   def new
@@ -15,7 +19,7 @@ class RiceBallsController < ApplicationController
     @form = RecipeForm.new(user: @user, attributes: form_params)
 
     if @form.save
-      redirect_to root_path, notice: t(".success")
+      redirect_to rice_balls_path, notice: t(".success")
     else
       render turbo_stream: [
         turbo_stream.remove("exist_form_errors"),
