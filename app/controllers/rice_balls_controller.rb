@@ -1,5 +1,6 @@
 class RiceBallsController < ApplicationController
   before_action :set_user, only: %i[new create]
+  before_action :authenticate_user!, except: [ :index, :show ]
 
   def index
     @q = RiceBall.ransack(params[:q])
