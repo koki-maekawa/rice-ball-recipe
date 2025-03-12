@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, skip: [ :unlocks ], controllers: {
     registrations: "users/registrations"
   }
+  resources :users, only: [ :show ]
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   has_many :rice_balls, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :bookmarked_rice_balls, through: :bookmarks, source: :rice_ball
 
   def already_bookmarked?(rice_ball)
     self.bookmarks.exists?(rice_ball_id: rice_ball.id)

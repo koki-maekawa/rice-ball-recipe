@@ -4,6 +4,6 @@
     <li><%= link_to t("shared.sidebar.search_rice_ball"), rice_balls_path %></li>
     <li><%= link_to t("shared.sidebar.shef"), "#" %></li>
     <li><%= link_to t("shared.sidebar.ranking"), "#" %></li>
-    <li><%= link_to t("shared.sidebar.my_page"), "#" %></li>
+    <li><%= link_to t("shared.sidebar.my_page"), user_path(current_user) %></li>
   </ul>
 </aside>
