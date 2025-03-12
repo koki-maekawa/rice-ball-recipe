@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   has_many :rice_balls, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 end
