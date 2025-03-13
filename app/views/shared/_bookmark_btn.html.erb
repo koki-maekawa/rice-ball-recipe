@@ -1,9 +1,11 @@
-<% if current_user.already_bookmarked?(rice_ball) %>
-  <%= link_to rice_ball_bookmarks_path(rice_ball), data: { turbo_method: :delete }, class: "z-10" do %>
-    <i class="fa-solid fa-bookmark fa-xl"></i>
-  <% end %>
-<% else %>
-  <%= link_to rice_ball_bookmarks_path(rice_ball), data: { turbo_method: :post }, class: "z-10" do %>
-    <i class="fa-regular fa-bookmark fa-xl"></i>
+<% if user_signed_in? %>
+  <% if current_user.already_bookmarked?(rice_ball) %>
+    <%= link_to rice_ball_bookmarks_path(rice_ball), data: { turbo_method: :delete }, class: "z-10" do %>
+      <i class="fa-solid fa-bookmark fa-xl"></i>
+    <% end %>
+  <% else %>
+    <%= link_to rice_ball_bookmarks_path(rice_ball), data: { turbo_method: :post }, class: "z-10" do %>
+      <i class="fa-regular fa-bookmark fa-xl"></i>
+    <% end %>
   <% end %>
 <% end %>
