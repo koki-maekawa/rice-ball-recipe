@@ -6,7 +6,7 @@
     <li><%= link_to t("shared.sidebar.ranking"), "#" %></li>
     <% if user_signed_in? %>
       <li>
-          <%= link_to t("shared.sidebar.my_page"), user_path(current_user) %>
+        <%= link_to t("shared.sidebar.my_page"), user_path(current_user) %>
       </li>
     <% end %>
   </ul>
