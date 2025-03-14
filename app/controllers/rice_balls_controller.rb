@@ -4,7 +4,7 @@ class RiceBallsController < ApplicationController
 
   def index
     @q = RiceBall.ransack(params[:q])
-    @rice_balls = @q.result(distinct: true).includes(:ingredients).order(created_at: :desc).page(params[:page]).per(8)
+    @rice_balls = @q.result(distinct: true).includes(:user, :image_attachment).order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def show

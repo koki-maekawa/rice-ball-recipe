@@ -10,8 +10,8 @@
   <div class="card-body">
     <h2 class="card-title text-2xl font-bold"><%= rice_ball.title %></h2>
     <h2 class="card-title text-xl font-bold flex justify-end">
-      <%= link_to user_path(rice_ball.user), class: "z-10" do %>
-        <%= t("defaults.created_by") %> <%= rice_ball.user.name %>
+      <%= link_to user_path(user), class: "z-10" do %>
+        <%= t("defaults.created_by") %> <%= user.name %>
       <% end %>
     </h2>
   </div>

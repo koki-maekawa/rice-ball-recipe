@@ -6,7 +6,7 @@
     <h3 class="text-2xl font-semibold"><%= t(".created_recipe") %></h3>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
       <% @created_rice_balls.each do |rice_ball| %>
-        <%= render "rice_balls/rice_ball", rice_ball: rice_ball %>
+        <%= render "rice_balls/rice_ball", rice_ball: rice_ball, user: @user %>
       <% end %>
     </div>
     <div class="flex justify-center">
@@ -17,7 +17,7 @@
     <h3 class="text-2xl font-semibold"><%= t(".bookmark") %></h3>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
       <% @bookmarked_rice_balls.each do |rice_ball| %>
-        <%= render "rice_balls/rice_ball", rice_ball: rice_ball %>
+        <%= render "rice_balls/rice_ball", rice_ball: rice_ball, user: @user %>
       <% end %>
     </div>
     <div class="flex justify-center">
