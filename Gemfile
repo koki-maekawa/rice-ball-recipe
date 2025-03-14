@@ -65,6 +65,9 @@ group :development, :test do
   # test
   gem "rspec-rails"
   gem "factory_bot_rails"
+
+  # N+1
+  gem "bullet"
 end
 
 group :development do
