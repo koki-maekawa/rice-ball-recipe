@@ -17,7 +17,7 @@
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
   <% @rice_balls.each do |rice_ball| %>
-    <%= render rice_ball %>
+    <%= render "rice_ball", rice_ball: rice_ball, user: rice_ball.user %>
   <% end %>
 </div>
 <div class="flex justify-center">

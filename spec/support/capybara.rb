@@ -5,6 +5,7 @@ Capybara.register_driver :remote_chrome do |app|
     url = ENV["SELENIUM_DRIVER_URL"]
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('headless')
+    options.add_argument('window-size=1680x1050')
 
     Capybara::Selenium::Driver.new(app,
                                 browser: :remote,

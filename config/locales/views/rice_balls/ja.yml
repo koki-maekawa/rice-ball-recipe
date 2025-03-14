@@ -6,8 +6,8 @@ ja:
     add_step_form: '作り方追加'
     step_description_placeholder: 'おにぎりを握る'
     recipe_submit: 'レシピを保存'
+    created_by: '作成者'
   rice_balls:
     create:
       success: 'おにぎりレシピの投稿が成功しました'
-    show:
-      created_by: '作成者'
+  

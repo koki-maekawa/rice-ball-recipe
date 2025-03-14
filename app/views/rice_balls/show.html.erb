@@ -11,7 +11,11 @@
     <% end %>
     <div class="w-2/3 gap-4">
       <h2 class="text-3xl font-bold"><%= @rice_ball.title %></h2>
-      <h3 class="text-xl font-bold"><%= t(".created_by") %> <%= @rice_ball.user.name %></h3>
+      <h3 class="text-xl font-bold">
+        <%= link_to user_path(@rice_ball.user), class: "z-10" do %>
+          <%= t("defaults.created_by") %> <%= @rice_ball.user.name %>
+        <% end %>
+      </h3>
     </div>
   </div>
   <div class="mt-8 flex gap-8">
