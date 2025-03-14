@@ -25,6 +25,7 @@ RSpec.describe 'ユーザー関連機能', :js, type: :system do
 
   describe 'ログイン機能' do
     let!(:user) { FactoryBot.create(:user, email: 'test@example.com', password: 'password') }
+
     it '正常にログインができること' do
       visit new_user_session_path
       fill_in I18n.t('activerecord.attributes.user.email'), with: 'test@example.com'
@@ -63,6 +64,7 @@ RSpec.describe 'ユーザー関連機能', :js, type: :system do
 
   describe 'パスワードリセット機能' do
     let!(:user) { FactoryBot.create(:user, email: 'test@example.com', password: 'password') }
+
     describe 'passwords#new' do
       it 'パスワードリセットの指示を送信できること' do
         visit new_user_password_path
