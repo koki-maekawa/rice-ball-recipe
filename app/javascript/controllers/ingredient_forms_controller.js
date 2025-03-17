@@ -15,7 +15,8 @@ export default class extends Controller {
 
   addIngredientForm(event) {
     event?.preventDefault()
-    var content = this.TemplateTarget.innerHTML.replace(/RECORD/g, new Date().getTime());
+    const recordIndex = this.ingredientFieldsTargets.length;
+    var content = this.TemplateTarget.innerHTML.replace(/RECORD/g, recordIndex);
     this.addIngredientFormAreaTarget.insertAdjacentHTML('beforebegin', content)
   };
   
