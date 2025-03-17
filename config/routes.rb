@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "static_pages#top"
+  root to: "rice_balls#index"
 
   devise_for :users, skip: [ :unlocks ], controllers: {
     registrations: "users/registrations"
