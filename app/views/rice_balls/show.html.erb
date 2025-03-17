@@ -12,7 +12,7 @@
     <div class="w-2/3 gap-4">
       <h2 class="text-3xl font-bold"><%= @rice_ball.title %></h2>
       <h3 class="text-xl font-bold">
-        <%= link_to user_path(@rice_ball.user), class: "z-10" do %>
+        <%= link_to user_path(@rice_ball.user) do %>
           <%= t("defaults.created_by") %> <%= @rice_ball.user.name %>
         <% end %>
       </h3>
@@ -44,4 +44,14 @@
       </div>
     <% end %>
   </div>
+  <% if current_user == @rice_ball.user %>
+    <div class="flex justify-end space-x-4">
+      <%= link_to t(".edit"), edit_rice_ball_path(@rice_ball), class: "btn btn-primary btn-outline" %>
+      <%= link_to t(".destroy"), rice_ball_path(@rice_ball),
+            data: {
+              turbo_method: "delete",
+              turbo_confirm: t(".destroy_confirm") },
+            class: "btn btn-error btn-outline" %>
+    </div>
+  <% end %>
 </div>

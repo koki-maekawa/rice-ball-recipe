@@ -17,51 +17,51 @@ class RecipeForm < FormBase
     end
 
     def ingredients_attributes=(others)
-      @ingredients = others.values.map { |other|
-        if other[:id].present?
-            if other[:_destroy] == "true"
-                Ingredient.destroy(id: other[:id])
-            else
-                ingredient = Ingredient.find(id: other[:id])
-                other = other.dup
-                other.delete(:_destroy)
-                ingredient.attributes = other
-                ingredient
-            end
+      @ingredients = others.values.map do |other|
+        other = other.dup
+        id = other[:id].to_i if other[:id].present?
+        if id.present?
+          if other[:_destroy].to_s == "true"
+            Ingredient.find(id).destroy
+            next nil
+          else
+            ingredient = Ingredient.find(id)
+            other.delete(:_destroy)
+            ingredient.assign_attributes(other)
+            ingredient
+          end
         else
-            if other[:_destroy] == "false"
-                ingredient = Ingredient.new(rice_ball: @rice_ball)
-                other = other.dup
-                other.delete(:_destroy)
-                ingredient.attributes = other
-                ingredient
-            end
+          next nil if other[:_destroy].to_s == "true"
+          ingredient = Ingredient.new(rice_ball: @rice_ball)
+          other.delete(:_destroy)
+          ingredient.assign_attributes(other)
+          ingredient
         end
-      }.compact
+      end.compact
     end
 
     def steps_attributes=(others)
-      @steps = others.values.map { |other|
-        if other[:id].present?
-            if other[:_destroy] == "true"
-                Step.destroy(id: other[:id])
-            else
-                step = Step.find(id: other[:id])
-                other = other.dup
-                other.delete(:_destroy)
-                step.attributes = other
-                step
-            end
+      @steps = others.values.map do |other|
+        other = other.dup
+        id = other[:id].to_i if other[:id].present?
+        if id.present?
+          if other[:_destroy].to_s == "true"
+            Step.find(id).destroy
+            next nil
+          else
+            step = Step.find(id)
+            other.delete(:_destroy)
+            step.assign_attributes(other)
+            step
+          end
         else
-            if other[:_destroy] == "false"
-                step = Step.new(rice_ball: @rice_ball)
-                other = other.dup
-                other.delete(:_destroy)
-                step.attributes = other
-                step
-            end
+          next nil if other[:_destroy].to_s == "true"
+          step = Step.new(rice_ball: @rice_ball)
+          other.delete(:_destroy)
+          step.assign_attributes(other)
+          step
         end
-      }.compact
+      end.compact
     end
 
     private

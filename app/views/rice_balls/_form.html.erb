@@ -17,9 +17,10 @@
           <%= render "ingredient_fields", f: f %>
         <% end %>
       </template>
-      <% recipe_form.ingredients&.each do |ingredient| %>
-        <%= form.fields_for(:ingredients_attributes, ingredient, index: "RECORD") do |f| %>
+      <% recipe_form.ingredients&.each_with_index do |ingredient, i| %>
+        <%= form.fields_for(:ingredients_attributes, ingredient, index: i) do |f| %>
           <%= render "ingredient_fields", f: f %>
+          <%= f.hidden_field :id if ingredient.persisted? %>
         <% end %>
       <% end %>
       <div data-ingredient-forms-target="addIngredientFormArea">
@@ -33,9 +34,10 @@
           <%= render "step_fields", f: f %>
         <% end %>
       </template>
-      <% recipe_form.steps&.each do |step| %>
-        <%= form.fields_for(:steps_attributes, step, index: "RECORD") do |f| %>
+      <% recipe_form.steps&.each_with_index do |step, i| %>
+        <%= form.fields_for(:steps_attributes, step, index: i) do |f| %>
           <%= render "step_fields", f: f %>
+          <%= f.hidden_field :id if step.persisted? %>
         <% end %>
       <% end %>
       <div data-step-forms-target="addStepFormArea">

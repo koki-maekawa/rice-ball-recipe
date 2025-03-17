@@ -1,5 +1,6 @@
 class RiceBallsController < ApplicationController
-  before_action :set_user, only: %i[new create]
+  before_action :set_user, only: %i[new create edit update destroy]
+  before_action :set_recipe, only: %i[edit update destroy]
   before_action :authenticate_user!, except: [ :index, :show ]
 
   def index
@@ -29,17 +30,35 @@ class RiceBallsController < ApplicationController
   end
 
   def edit
+    @form = RecipeForm.new(user: @user, recipe: @recipe)
   end
 
   def update
+    @form = RecipeForm.new(user: @user, attributes: form_params, recipe: @recipe)
+
+    if @form.save
+      redirect_to rice_ball_path(@recipe), notice: t(".success")
+    else
+      render turbo_stream: [
+        turbo_stream.remove("exist_form_errors"),
+        turbo_stream.prepend("form_errors", partial: "shared/error_message", locals: { recipe_form: @form })
+      ]
+    end
   end
 
   def destroy
+    rice_ball = RiceBall.find(params[:id])
+    rice_ball.destroy
+    redirect_to rice_balls_path, notice: t(".success")
   end
 
   private
     def set_user
         @user = current_user
+    end
+
+    def set_recipe
+      @recipe = RiceBall.find(params[:id])
     end
 
     def form_params

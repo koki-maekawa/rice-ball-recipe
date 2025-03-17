@@ -9,7 +9,8 @@ export default class extends Controller {
 
   addStepForm(event) {
     event?.preventDefault()
-    var content = this.TemplateTarget.innerHTML.replace(/RECORD/g, new Date().getTime());
+    const recordIndex = this.stepFieldsTargets.length;
+    var content = this.TemplateTarget.innerHTML.replace(/RECORD/g, recordIndex);
     this.addStepFormAreaTarget.insertAdjacentHTML('beforebegin', content)
     this.updateStepNumbers();
   };
