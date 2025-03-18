@@ -3,6 +3,8 @@ ja:
     create_rice_ball: "おにぎりを作る"
     search_rice_ball: "おにぎりを探す"
     my_page: "マイページ"
+    bookmark: '保存'
+    bookmarked: '解除'
   shared:
     header:
       logout: "ログアウト"
