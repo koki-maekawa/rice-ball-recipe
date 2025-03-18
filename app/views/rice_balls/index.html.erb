@@ -1,25 +1,16 @@
-<div class="flex justify-center p-8">
-  <%= search_form_for @q do |f| %>
-    <label class="input input-bordered flex items-center gap-2">
+<div class="flex flex-col">
+  <%= search_form_for @q, class: "self-center m-4" do |f| %>
+    <label class="input input-bordered p-2 flex items-center">
       <%= f.search_field :title_or_ingredients_name_cont, placeholder: "Search" %>
-      <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            class="h-4 w-4 opacity-70">
-        <path
-            fill-rule="evenodd"
-            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-            clip-rule="evenodd"></path>
-      </svg>
+      <i class="fa-solid fa-magnifying-glass"></i>
     </label>
   <% end %>
+  <div class="gap-4 p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <% @rice_balls.each do |rice_ball| %>
+      <%= render "rice_ball", rice_ball: rice_ball, user: rice_ball.user %>
+    <% end %>
+  </div>
 </div>
-<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-  <% @rice_balls.each do |rice_ball| %>
-    <%= render "rice_ball", rice_ball: rice_ball, user: rice_ball.user %>
-  <% end %>
-</div>
-<div class="flex justify-center">
+<div class="flex justify-center m-6">
   <%= paginate @rice_balls %>
 </div>
