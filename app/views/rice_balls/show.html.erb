@@ -1,48 +1,48 @@
 <div class="m-2 p-6 md:p-10 bg-base-100 shadow-lg rounded-box">
   <div class="gap-6 grid grid-cols-1 sm:grid-cols-2">
-      <% if @rice_ball.image.attached? %>
-        <figure>
-          <%= image_tag @rice_ball.image.variant(:show), class: "w-94 h-64" %>
-        </figure>
-      <% else %>
-        <figure>
-          <%= image_tag "onigiri.png", class: "w-94 h-64" %>
-        </figure>
-      <% end %>
-      <div class="space-y-4">
-        <h2>
-          <span class="text-xl font-bold"><%= @rice_ball.title %></span>
-        </h2>
-        <div class="z-10">
-          <%= link_to user_path(@rice_ball.user), class: "text-lg font-bold" do %>
-            <%= t("defaults.created_by") %> <%= @rice_ball.user.name %>
-          <% end %>
-        </div>
+    <% if @rice_ball.image.attached? %>
+      <figure>
+        <%= image_tag @rice_ball.image.variant(:show), class: "w-94 h-64" %>
+      </figure>
+    <% else %>
+      <figure>
+        <%= image_tag "onigiri.png", class: "w-94 h-64" %>
+      </figure>
+    <% end %>
+    <div class="space-y-4">
+      <h2>
+        <span class="text-xl font-bold"><%= @rice_ball.title %></span>
+      </h2>
+      <div class="z-10">
+        <%= link_to user_path(@rice_ball.user), class: "text-lg font-bold" do %>
+          <%= t("defaults.created_by") %> <%= @rice_ball.user.name %>
+        <% end %>
       </div>
+    </div>
+    <div>
+      <h3 class="text-lg font-bold"><%= Ingredient.model_name.human %></h3>
+      <ul class="list-none">
+        <% @rice_ball.ingredients.each do |ingredient| %>
+          <li class="flex flex-wrap justify-between items-center py-2 border-b">
+            <span class="text-lg"><%= ingredient.name %></span>
+            <span class="text-lg font-bold"><%= ingredient.amount %></span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <% if @rice_ball.steps.present? %>
       <div>
-        <h3 class="text-lg font-bold"><%= Ingredient.model_name.human %></h3>
+        <h3 class="text-lg font-bold"><%= Step.model_name.human %></h3>
         <ul class="list-none">
-          <% @rice_ball.ingredients.each do |ingredient| %>
-            <li class="flex flex-wrap justify-between items-center py-2 border-b">
-              <span class="text-lg"><%= ingredient.name %></span>
-              <span class="text-lg font-bold"><%= ingredient.amount %></span>
+          <% @rice_ball.steps.order(:step_number).each do |step| %>
+            <li class="flex flex-wrap py-2 border-b gap-4">
+              <span class="text-lg"><%= step.step_number %></span>
+              <span class="text-lg"><%= step.description %></span>
             </li>
           <% end %>
         </ul>
       </div>
-      <% if @rice_ball.steps.present? %>
-        <div>
-          <h3 class="text-lg font-bold"><%= Step.model_name.human %></h3>
-          <ul class="list-none">
-            <% @rice_ball.steps.order(:step_number).each do |step| %>
-              <li class="flex flex-wrap py-2 border-b gap-4">
-                <span class="text-lg"><%= step.step_number %></span>
-                <span class="text-lg"><%= step.description %></span>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+    <% end %>
   </div>
   <% if current_user == @rice_ball.user %>
     <ul class="flex justify-end gap-4 items-center m-4">
