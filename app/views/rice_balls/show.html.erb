@@ -44,21 +44,21 @@
       </div>
     <% end %>
   </div>
-  <% if current_user == @rice_ball.user %>
-    <ul class="flex justify-end gap-4 items-center m-4">
+  <ul class="flex justify-end gap-2 items-center mt-6">
+    <% if current_user == @rice_ball.user %>
       <li>
         <%= link_to t(".edit"), edit_rice_ball_path(@rice_ball), class: "btn btn-xs sm:btn-sm md:btn-md btn-primary btn-outline" %>
       </li>
       <li>
         <%= link_to t(".destroy"), rice_ball_path(@rice_ball),
-            data: {
-              turbo_method: "delete",
-              turbo_confirm: t(".destroy_confirm") },
-            class: "btn btn-xs sm:btn-sm md:btn-md btn-error btn-outline" %>
+              data: {
+                turbo_method: "delete",
+                turbo_confirm: t(".destroy_confirm") },
+              class: "btn btn-xs sm:btn-sm md:btn-md btn-error btn-outline" %>
       </li>
-      <li>
-        <%= render "shared/bookmark_btn", rice_ball: @rice_ball, size: "show" %>
-      </li>
-    </ul>
-  <% end %>
+    <% end %>
+    <li>
+      <%= render "shared/bookmark_btn", rice_ball: @rice_ball, size: "show" %>
+    </li>
+  </ul>
 </div>
