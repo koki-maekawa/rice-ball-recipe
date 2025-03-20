@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   devise_for :users, skip: [ :unlocks ], controllers: {
     registrations: "users/registrations"
   }
-  resources :users, only: [ :show ]
+  resources :users, only: [ :show ] do
+    member do
+      get "created_index"
+      get "bookmarked_index"
+    end
+  end
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 

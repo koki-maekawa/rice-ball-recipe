@@ -1,5 +1,10 @@
 ja:
+  defaults:
+    created_recipe: "投稿レシピ"
+    bookmark: "ブックマーク"    
   users:
     show:
-      created_recipe: "投稿レシピ"
-      bookmark: "ブックマーク"
+      created_index: "投稿レシピをすべて見る"
+      bookmarked_index: "ブックマークをすべて見る"
+      no_created_index: "投稿レシピはありません"
+      no_bookmarked_index: "ブックマークされたレシピはありません"
