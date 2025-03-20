@@ -1,4 +1,4 @@
-<%= form_with(model: recipe_form, url: recipe_form.persisted? ? rice_ball_path(recipe_form) : rice_balls_path, class: "m-4 p-6 md:p-10 bg-base-100 shadow-lg rounded-box space-y-8", id: "form_errors")  do |form| %>
+<%= form_with(model: recipe_form, url: recipe_form.persisted? ? rice_ball_path(recipe_form) : rice_balls_path, class: "m-4 p-6 md:p-10 bg-base-100 shadow-lg rounded-box space-y-8 max-w-7xl w-full", id: "form_errors")  do |form| %>
   <%= form.fields_for(:rice_ball_attributes, recipe_form.rice_ball) do |rice_ball_fields| %>
     <div class="form-control">
       <%= rice_ball_fields.label :title, class: "label text-sm sm:text-lg md:text-xl font-bold" %>
