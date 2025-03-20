@@ -1,22 +1,11 @@
-<div class="flex flex-col md:flex-row nested-fields" data-step-forms-target="stepFields">
-  <div class="text-lg w-12 h-12 flex items-center justify-center bg-info-content text-white rounded-md"></div>
+<div class="flex nested-fields" data-step-forms-target="stepFields">
+  <div class="bg-info-content rounded-md px-2 sm:px-3 md:px-4 flex justify-center items-center"><span class="text-white text-sm sm:text-lg md:text-xl"></span></div>
   <div class="form-control w-full">
-    <%= f.text_area :description, class: "input input-bordered w-full", placeholder: t("defaults.step_description_placeholder") %>
+    <%= f.text_area :description, class: "input input-xs sm:input-sm md:input-md input-bordered w-full", placeholder: t("defaults.step_description_placeholder") %>
   </div>
   <div class="form-control w-12">
-    <%= link_to "#", data: { action: "click->step-forms#removeForm" }, class: "btn btn-error" do %>
-      <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor">
-        <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
+    <%= link_to "#", data: { action: "click->step-forms#removeForm" }, class: "btn btn-xs sm:btn-sm md:btn-md btn-error" do %>
+      <i class="fa-solid fa-xmark"></i>
     <% end %>
     <%= f.hidden_field :_destroy %>
     <%= f.hidden_field :step_number %>

@@ -27,7 +27,7 @@ export default class extends Controller {
     this.stepFieldsTargets
       .filter(field => field.querySelector("input[name*='_destroy']")?.value !== "true")
       .forEach((field, index) => {
-        field.querySelector("div").textContent = index + 1;
+        field.querySelector("span").textContent = index + 1;
         field.querySelector("input[name*='step_number']").value = index + 1;
       });
   }

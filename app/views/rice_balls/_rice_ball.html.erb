@@ -1,21 +1,23 @@
-<div class="card w-80 bg-base-100 shadow-xl hover:border-primary hover:border">
+<div class="card bg-base-100 shadow-lg max-w-xl hover:border-primary hover:border">
   <%= link_to "", rice_ball_path(rice_ball), class: "absolute top-0 left-0 right-0 bottom-0" %>
   <figure>
     <% if rice_ball.image.attached? %>
-      <%= image_tag rice_ball.image.variant(:index), class: "w-full h-64" %>
+      <%= image_tag rice_ball.image.variant(:index), class: "w-full h-40 object-cover" %>
     <% else %>
-      <%= image_tag "onigiri.png", class: "w-full h-64" %>
+      <%= image_tag "onigiri.png", class: "w-full h-40 object-cover" %>
     <% end %>
   </figure>
-  <div class="card-body">
-    <h2 class="card-title text-2xl font-bold"><%= rice_ball.title %></h2>
-    <h2 class="card-title text-xl font-bold flex justify-end">
-      <%= link_to user_path(user), class: "z-10" do %>
+  <div class="flex flex-col h-full p-2">
+    <h2 class="card-title line-clamp-2 flex-1">
+      <span class="text-xl font-bold"><%= rice_ball.title %></span>
+    </h2>
+    <div class="self-end line-clamp-1 z-10">
+      <%= link_to user_path(user), class: "text-base font-bold" do %>
         <%= t("defaults.created_by") %> <%= user.name %>
       <% end %>
-    </h2>
-  </div>
-  <div class="flex justify-end p-2">
-    <%= render "shared/bookmark_btn", rice_ball: %>
+    </div>
+    <div class="self-end z-10">
+      <%= render "shared/bookmark_btn", rice_ball:, size: "index" %>
+    </div>
   </div>
 </div>

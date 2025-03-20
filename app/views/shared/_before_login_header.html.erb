@@ -1,10 +1,39 @@
-<header class="p-5">
-  <nav class="navbar bg-base-100">
-    <div class="container mx-auto flex justify-between items-center">
+<header class="bg-base-200 p-2">
+  <nav class="navbar bg-base-100 rounded-box flex">
+    <div class="flex-1 p-2">
       <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag "onigiri.png", alt: "Onigiri logo", class: "h-8 w-8" %>
+        <%= image_tag "onigiri.png", alt: "Onigiri logo", class: "h-12 w-12" %>
       <% end %>
-      <%= link_to t("shared.before_login_header.login"), new_user_session_path, class: "btn btn-outline btn-primary" %>
+    </div>
+    <div class="flex-2 justify-self-end p-2">
+      <%= link_to t("shared.before_login_header.login"), new_user_session_path, class: "btn btn-xs sm:btn-sm md:btn-md btn-outline" %>
+      <div class="dropdown dropdown-end lg:hidden">
+        <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><i class="fa-solid fa-bars fa-xl"></i></div>
+        <ul
+            tabindex="0"
+            class="menu dropdown-content bg-base-100 rounded-box z-[1] mt-4 w-52 p-2 shadow">
+          <li>
+            <%= link_to new_rice_ball_path, class: "flex items-center space-x-2" do %>
+              <i class="fa-solid fa-utensils"></i>
+              <span><%= t("defaults.create_rice_ball") %></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to rice_balls_path, class: "flex items-center space-x-2" do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span><%= t("defaults.search_rice_ball") %></span>
+            <% end %>
+          </li>
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to user_path(current_user), class: "flex items-center space-x-3" do %>
+                <i class="fa-solid fa-person"></i>
+                <span><%= t("defaults.my_page") %></span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </nav>
 </header>

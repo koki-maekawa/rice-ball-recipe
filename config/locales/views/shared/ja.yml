@@ -1,4 +1,10 @@
 ja:
+  defaults:
+    create_rice_ball: "おにぎりを作る"
+    search_rice_ball: "おにぎりを探す"
+    my_page: "マイページ"
+    bookmark: '保存'
+    bookmarked: '解除'
   shared:
     header:
       logout: "ログアウト"
@@ -7,9 +13,3 @@ ja:
     footer:
       terms_of_service: "利用規約"
       contact: "お問い合わせ"
-    sidebar:
-      create_rice_ball: "おにぎりを作る"
-      search_rice_ball: "おにぎりを探す"
-      shef: "シェフ"
-      ranking: "ランキング"
-      my_page: "マイページ"
