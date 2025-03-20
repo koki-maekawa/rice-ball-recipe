@@ -27,8 +27,10 @@
         <div class="hidden w-1/5 lg:block">
           <%= render "shared/sidebar" %>
         </div>
-        <div class="w-full lg:w-4/5">
-          <%= yield %>
+        <div class="w-full lg:w-4/5 flex justify-center">
+          <div class="max-w-7xl w-full">
+            <%= yield %>
+          </div>
         </div>
       </div>
     </div>
