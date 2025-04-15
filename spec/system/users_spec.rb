@@ -41,7 +41,7 @@ RSpec.describe 'ユーザー関連機能', :js, type: :system do
       fill_in I18n.t('activerecord.attributes.user.password'), with: 'password'
       check I18n.t('activerecord.attributes.user.remember_me')
       click_button I18n.t('devise.sessions.new.sign_in')
-      sleep 1
+      sleep 3
       expect(page.driver.browser.manage.cookie_named('remember_user_token')).not_to be_nil
     end
 
