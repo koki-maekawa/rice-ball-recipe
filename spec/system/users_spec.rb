@@ -41,8 +41,13 @@ RSpec.describe 'ユーザー関連機能', :js, type: :system do
       fill_in I18n.t('activerecord.attributes.user.password'), with: 'password'
       check I18n.t('activerecord.attributes.user.remember_me')
       click_button I18n.t('devise.sessions.new.sign_in')
-      sleep 3
-      expect(page.driver.browser.manage.cookie_named('remember_user_token')).not_to be_nil
+      expect(page).to have_content I18n.t('devise.sessions.signed_in')
+      cookie_names = []
+      page.driver.with_playwright_page do |playwright_page|
+        cookies = playwright_page.context.cookies
+        cookie_names = cookies.map { |cookie| cookie['name'] }
+      end
+      expect(cookie_names).to include('remember_user_token')
     end
 
     it 'メールアドレスが存在しない場合エラーメッセージが表示されること' do

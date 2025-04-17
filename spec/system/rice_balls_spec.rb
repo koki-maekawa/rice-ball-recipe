@@ -292,8 +292,10 @@ RSpec.describe 'RiceBalls', :js, type: :system do
     describe 'おにぎりレシピ削除' do
         it 'おにぎりレシピの削除が成功する' do
             visit rice_ball_path(rice_ball)
-            click_link I18n.t('rice_balls.show.destroy')
-            expect(page.accept_confirm).to eq I18n.t('rice_balls.show.destroy_confirm')
+            message = page.accept_confirm do
+                click_link I18n.t('rice_balls.show.destroy')
+              end
+            expect(message).to eq I18n.t('rice_balls.show.destroy_confirm')
             expect(page).to have_content I18n.t('rice_balls.destroy.success')
             expect(current_path).to eq rice_balls_path
             expect(page).not_to have_content rice_ball.title
