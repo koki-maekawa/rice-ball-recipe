@@ -15,7 +15,9 @@
   },
 
   "containerEnv": {
-    "DB_HOST": "postgres"
+    "DB_HOST": "postgres",
+    "PLAYWRIGHT_BROWSER": "chromium",
+    "PLAYWRIGHT_HEADLESS": "true"
   },
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -29,5 +31,5 @@
 
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "bin/setup"
+  "postCreateCommand": "bin/setup && script/setup"
 }
