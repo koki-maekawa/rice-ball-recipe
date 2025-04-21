@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -eo pipefail
 echo "Running HTML Beautifier..."
 bundle exec htmlbeautifier app/views/*/*.html.erb
