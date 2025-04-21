@@ -10,6 +10,6 @@ class User < ApplicationRecord
   has_many :bookmarked_rice_balls, through: :bookmarks, source: :rice_ball
 
   def already_bookmarked?(rice_ball)
-    self.bookmarks.exists?(rice_ball_id: rice_ball.id)
+    bookmarks.pluck(:rice_ball_id).include?(rice_ball.id)
   end
 end

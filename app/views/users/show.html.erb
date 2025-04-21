@@ -10,11 +10,11 @@
     <h3><span class="font-bold text-lg sm:text-xl md:text-xl"><%= t("defaults.created_recipe") %></span></h3>
     <% if @created_rice_balls_count >= 1 %>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <% @created_rice_balls.first(2).each do |rice_ball| %>
+        <% @created_rice_balls.each do |rice_ball| %>
           <%= render "rice_balls/rice_ball", rice_ball: rice_ball, user: rice_ball.user %>
         <% end %>
       </div>
-      <% if @created_rice_balls_count >= 3 %>
+      <% if @created_rice_balls_count >= 5 %>
         <div class="flex justify-center">
           <%= link_to t(".created_index"), created_index_user_path(@user), class: "btn btn-xs sm:btn-sm md:btn-md btn-neutral btn-wide w-full btn-white mt-6" %>
         </div>
@@ -29,11 +29,11 @@
     <h3><span class="font-bold text-lg sm:text-xl md:text-xl"><%= t("defaults.bookmark") %></span></h3>
     <% if @bookmarked_rice_balls_count >= 1 %>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <% @bookmarked_rice_balls.first(2).each do |rice_ball| %>
+        <% @bookmarked_rice_balls.each do |rice_ball| %>
           <%= render "rice_balls/rice_ball", rice_ball: rice_ball, user: rice_ball.user %>
         <% end %>
       </div>
-      <% if @bookmarked_rice_balls_count >= 3 %>
+      <% if @bookmarked_rice_balls_count >= 5 %>
         <div class="flex justify-center">
           <%= link_to t(".bookmarked_index"), bookmarked_index_user_path(@user), class: "btn btn-xs sm:btn-sm md:btn-md btn-neutral btn-wide w-full mt-6" %>
         </div>

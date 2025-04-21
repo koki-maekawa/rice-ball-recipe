@@ -8,6 +8,8 @@ Rails.application.configure do
     Bullet.console       = true
     Bullet.rails_logger  = true
     Bullet.add_footer    = true
+    Bullet.add_safelist type: :n_plus_one_query, class_name: "RiceBall", association: :user
+    Bullet.add_safelist type: :unused_eager_loading, class_name: "RiceBall", association: :user
   end
 
   # Settings specified here will take precedence over those in config/application.rb.
