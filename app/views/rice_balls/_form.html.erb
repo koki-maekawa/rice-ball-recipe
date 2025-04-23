@@ -5,6 +5,10 @@
       <%= rice_ball_fields.text_area :title, class: "input input-xs sm:input-sm md:input-md input-bordered w-full" %>
     </div>
     <div class="form-control">
+      <%= rice_ball_fields.label :description, class: "label text-sm sm:text-lg md:text-xl font-bold" %>
+      <%= rice_ball_fields.text_area :description, class: "textarea textarea-xs sm:textarea-sm md:textarea-md textarea-bordered w-full" %>
+    </div>
+    <div class="form-control">
       <%= rice_ball_fields.label :image, class: "label text-sm sm:text-lg md:text-xl font-bold" %>
       <%= rice_ball_fields.file_field :image, class: "file-input file-input-xs sm:file-input-sm md:file-input-md file-input-bordered w-full" %>
     </div>
