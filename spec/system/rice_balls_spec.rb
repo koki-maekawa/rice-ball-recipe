@@ -52,6 +52,7 @@ RSpec.describe 'RiceBalls', :js, type: :system do
                 visit new_rice_ball_path
                 fill_in I18n.t('activerecord.attributes.rice_ball.title'), with: 'テストおにぎり'
                 attach_file I18n.t('activerecord.attributes.rice_ball.image'), Rails.root.join('spec/factories/test_image/onigiri.png')
+                fill_in I18n.t('activerecord.attributes.rice_ball.description'), with: 'テストおにぎりの説明文です'
 
                 click_link I18n.t('defaults.add_ingredient_form')
                 ingredients = [
@@ -86,6 +87,7 @@ RSpec.describe 'RiceBalls', :js, type: :system do
                 find('.absolute.top-0.left-0.right-0.bottom-0').click
                 expect(page).to have_content 'テストおにぎり'
                 expect(page).to have_css("img[src*='onigiri.png']")
+                expect(page).to have_content 'テストおにぎりの説明文です'
                 expect(page).to have_content 'ごはん'
                 expect(page).to have_content '150g'
                 expect(page).to have_content '塩'
@@ -100,6 +102,7 @@ RSpec.describe 'RiceBalls', :js, type: :system do
                 visit new_rice_ball_path
                 fill_in I18n.t('activerecord.attributes.rice_ball.title'), with: ''
                 attach_file I18n.t('activerecord.attributes.rice_ball.image'), Rails.root.join('spec/factories/test_image/onigiri.png')
+                fill_in I18n.t('activerecord.attributes.rice_ball.description'), with: 'テストおにぎりの説明文です'
 
                 click_link I18n.t('defaults.add_ingredient_form')
                 ingredients = [
@@ -252,6 +255,7 @@ RSpec.describe 'RiceBalls', :js, type: :system do
                 click_link I18n.t('rice_balls.show.edit')
                 fill_in I18n.t('activerecord.attributes.rice_ball.title'), with: '編集後タイトル'
                 attach_file I18n.t('activerecord.attributes.rice_ball.image'), Rails.root.join('spec/factories/test_image/food_konbini_onigiri.png')
+                fill_in I18n.t('activerecord.attributes.rice_ball.title'), with: '編集後タイトルの説明文です'
 
                 ingredients = [
                     { name: '編集後具材', amount: '150g' },
@@ -279,6 +283,7 @@ RSpec.describe 'RiceBalls', :js, type: :system do
                 expect(page).to have_content I18n.t('rice_balls.update.success')
                 expect(page).to have_content '編集後タイトル'
                 expect(page).to have_css("img[src*='food_konbini_onigiri.png']")
+                expect(page).to have_content '編集後タイトルの説明文です'
                 expect(page).to have_content '編集後具材'
                 expect(page).to have_content '150g'
                 expect(page).to have_content '塩'
