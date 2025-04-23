@@ -2,7 +2,7 @@
   <%= form.fields_for(:rice_ball_attributes, recipe_form.rice_ball) do |rice_ball_fields| %>
     <div class="form-control">
       <%= rice_ball_fields.label :title, class: "label text-sm sm:text-lg md:text-xl font-bold" %>
-      <%= rice_ball_fields.text_area :title, class: "input input-xs sm:input-sm md:input-md input-bordered w-full" %>
+      <%= rice_ball_fields.text_field :title, class: "input input-xs sm:input-sm md:input-md input-bordered w-full" %>
     </div>
     <div class="form-control">
       <%= rice_ball_fields.label :description, class: "label text-sm sm:text-lg md:text-xl font-bold" %>

@@ -1,13 +1,15 @@
-<div class="flex nested-fields" data-step-forms-target="stepFields">
-  <div class="bg-info-content rounded-md px-2 sm:px-3 md:px-4 flex justify-center items-center"><span class="text-white text-sm sm:text-lg md:text-xl"></span></div>
-  <div class="form-control w-full">
-    <%= f.text_area :description, class: "input input-xs sm:input-sm md:input-md input-bordered w-full", placeholder: t("defaults.step_description_placeholder") %>
+<div class="nested-fields" data-step-forms-target="stepFields">
+  <div class="bg-accent w-12 rounded-full p-2 sm:px-3 md:px-4 flex justify-center items-center"><span class="text-white text-sm sm:text-lg md:text-xl"></span></div>
+  <div class="flex">
+    <div class="form-control w-full">
+      <%= f.text_area :description, class: "textarea textarea-xs sm:textarea-sm md:textarea-md textarea-bordered w-full", placeholder: t("defaults.step_description_placeholder") %>
+    </div>
+    <div class="form-control w-12 self-center">
+      <%= link_to "#", data: { action: "click->step-forms#removeForm" }, class: "btn btn-xs sm:btn-sm md:btn-md btn-error" do %>
+        <i class="fa-solid fa-xmark"></i>
+      <% end %>
+    </div>
   </div>
-  <div class="form-control w-12">
-    <%= link_to "#", data: { action: "click->step-forms#removeForm" }, class: "btn btn-xs sm:btn-sm md:btn-md btn-error" do %>
-      <i class="fa-solid fa-xmark"></i>
-    <% end %>
-    <%= f.hidden_field :_destroy %>
-    <%= f.hidden_field :step_number %>
-  </div>
+  <%= f.hidden_field :_destroy %>
+  <%= f.hidden_field :step_number %>
 </div>
