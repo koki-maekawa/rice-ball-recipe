@@ -62,7 +62,7 @@ class RiceBallsController < ApplicationController
     end
 
     def form_params
-      params.require(:recipe_form).permit(rice_ball_attributes: %i[title image],
+      params.require(:recipe_form).permit(rice_ball_attributes: %i[title description image],
                                        ingredients_attributes: %i[id name amount _destroy],
                                        steps_attributes: %i[id description step_number _destroy],
                                        )
