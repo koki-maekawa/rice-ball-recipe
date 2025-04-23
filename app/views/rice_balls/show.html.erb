@@ -18,6 +18,12 @@
           <%= t("defaults.created_by") %> <%= @rice_ball.user.name %>
         <% end %>
       </div>
+      <% if @rice_ball.description %>
+        <div class="py-4">
+          <h3 class="text-lg font-bold"><%= RiceBall.human_attribute_name(:description) %></h3>
+          <p class="text-lg"><%= @rice_ball.description %></p>
+        </div>
+      <% end %>
     </div>
     <div>
       <h3 class="text-lg font-bold"><%= Ingredient.model_name.human %></h3>
