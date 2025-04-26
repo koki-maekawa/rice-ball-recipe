@@ -1,5 +1,11 @@
 <div class="flex flex-col max-w-7xl w-full gap-4 m-4">
-  <%= search_form_for @q, class: "self-center", html: { data: { turbo_frame: "rice-balls-list" } } do |f| %>
+  <%= search_form_for @q, class: "self-center",
+    html: {
+      data: {
+        turbo_frame: "rice-balls-list",
+        controller: "search",
+        action: "input->search#submit"
+        } } do |f| %>
     <label class="input input-bordered p-2 flex items-center">
       <%= f.search_field :title_or_ingredients_name_cont, placeholder: "Search" %>
       <i class="fa-solid fa-magnifying-glass"></i>

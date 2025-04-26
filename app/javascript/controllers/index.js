@@ -10,5 +10,8 @@ application.register("flash", FlashController)
 import IngredientFormsController from "./ingredient_forms_controller"
 application.register("ingredient-forms", IngredientFormsController)
 
+import SearchController from "./search_controller"
+application.register("search", SearchController)
+
 import StepFormsController from "./step_forms_controller"
 application.register("step-forms", StepFormsController)
