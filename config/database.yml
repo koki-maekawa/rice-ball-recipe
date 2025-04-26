@@ -85,4 +85,4 @@ test:
 #
 production:
   <<: *default
-  url: <%= Rails.application.credentials.dig(:render, :database_url) %>
+  url: <%= Rails.application.credentials.dig(:neon, :database_url) %>
