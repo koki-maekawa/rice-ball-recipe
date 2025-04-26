@@ -1,7 +1,8 @@
 <div class="alert alert-error p-6" id="exist_form_errors">
   <ul class="list-disc">
     <% recipe_form.errors.each do |error| %>
-      <li><%= error.full_message %></li>
+      <li><span class="text-xs sm:text-sm md:text-base"><%= error.full_message %></li>
+      </span>
     <% end %>
   </ul>
 </div>
