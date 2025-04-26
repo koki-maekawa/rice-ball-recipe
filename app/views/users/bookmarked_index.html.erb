@@ -8,13 +8,15 @@
   </div>
   <div>
     <h3><span class="font-bold text-lg sm:text-xl md:text-xl"><%= t("defaults.bookmark") %></span></h3>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-      <% @bookmarked_rice_balls.each do |rice_ball| %>
-        <%= render "rice_balls/rice_ball", rice_ball: rice_ball, user: rice_ball.user %>
-      <% end %>
-    </div>
-    <div class="flex justify-center">
-      <%= paginate @bookmarked_rice_balls %>
-    </div>
+    <%= turbo_frame_tag "rice-balls-list" do %>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <% @bookmarked_rice_balls.each do |rice_ball| %>
+          <%= render "rice_balls/rice_ball", rice_ball: rice_ball, user: rice_ball.user %>
+        <% end %>
+      </div>
+      <div class="flex justify-center">
+        <%= paginate @bookmarked_rice_balls %>
+      </div>
+    <% end %>
   </div>
 </div>

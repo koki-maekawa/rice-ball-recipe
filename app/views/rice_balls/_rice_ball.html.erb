@@ -1,5 +1,5 @@
 <div class="card bg-base-100 shadow-lg max-w-xl overflow-hidden hover:border-primary hover:border">
-  <%= link_to "", rice_ball_path(rice_ball), class: "absolute top-0 left-0 right-0 bottom-0" %>
+  <%= link_to "", rice_ball_path(rice_ball), data: { turbo_frame: "_top" }, class: "absolute top-0 left-0 right-0 bottom-0" %>
   <figure>
     <% if rice_ball.image.attached? %>
       <%= image_tag rice_ball.image.variant(:index), class: "w-full h-40 object-cover" %>
@@ -12,7 +12,7 @@
       <span class="text-xl font-bold"><%= rice_ball.title %></span>
     </h2>
     <div class="self-end line-clamp-1 z-10">
-      <%= link_to user_path(user), class: "text-base font-bold" do %>
+      <%= link_to user_path(user), data: { turbo_frame: "_top" }, class: "text-base font-bold" do %>
         <%= t("defaults.created_by") %> <%= user.name %>
       <% end %>
     </div>
