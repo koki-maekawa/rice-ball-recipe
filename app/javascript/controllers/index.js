@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import FlashController from "./flash_controller"
+application.register("flash", FlashController)
+
 import IngredientFormsController from "./ingredient_forms_controller"
 application.register("ingredient-forms", IngredientFormsController)
 
