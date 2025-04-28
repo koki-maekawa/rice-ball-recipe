@@ -6,5 +6,6 @@ FactoryBot.define do
     password_confirmation { password }
     reset_password_token { nil }
     reset_password_sent_at { nil }
+    policies_agreed { true }
   end
 end

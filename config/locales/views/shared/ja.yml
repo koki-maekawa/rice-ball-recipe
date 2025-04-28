@@ -5,11 +5,12 @@ ja:
     my_page: "マイページ"
     bookmark: '保存'
     bookmarked: '解除'
+    terms_of_service: "利用規約"
+    privacy_policy: "プライバシーポリシー"
   shared:
     header:
       logout: "ログアウト"
     before_login_header:
       login: "ログイン"
     footer:
-      terms_of_service: "利用規約"
-      contact: "お問い合わせ"
+      x: "公式Xアカウント"

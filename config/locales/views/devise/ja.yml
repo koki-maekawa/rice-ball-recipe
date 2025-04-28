@@ -3,3 +3,8 @@ ja:
     attributes:
       user:
         name: "名前"
+        policies_agreed: "利用規約とプライバシーポリシーの同意"
+  devise:
+    registrations:
+      new:
+        policies_agreed: "%{terms_url}と%{privacy_url}を承認する"

@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true
+  validates :policies_agreed, acceptance: true, on: :create
+
   has_many :rice_balls, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :bookmarked_rice_balls, through: :bookmarks, source: :rice_ball
