@@ -13,8 +13,8 @@ fi
 # Update the crontab for whenever tasks
 if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
   # This will update cron jobs as per the whenever configuration
-  bundle exec whenever --update-crontab
-  cron -f
+  sudo cron -f
+  sudo bundle exec whenever --update-crontab
 fi
 
 exec "${@}"
