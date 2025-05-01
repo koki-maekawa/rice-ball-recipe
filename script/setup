@@ -1,5 +1,14 @@
 #!/usr/bin/bash
 
+# Install cron service
+echo "Installing cron..."
+sudo apt-get update -qq && sudo apt-get install -y cron && sudo rm -rf /var/lib/apt/lists/*
+
+# Start cron service
+echo "Starting cron..."
+sudo service cron start
+
+# Set up Playwright
 export PLAYWRIGHT_CLI_VERSION=$(bundle exec ruby -e 'require "playwright"; puts Playwright::COMPATIBLE_PLAYWRIGHT_VERSION.strip')
 yarn add -D "playwright@$PLAYWRIGHT_CLI_VERSION"
 yarn run playwright install
