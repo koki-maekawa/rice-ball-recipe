@@ -35,6 +35,7 @@ module App
         request_specs: false     # リクエストのテストスペックファイルを生成しない
     end
 
+    config.active_job.queue_adapter = :delayed_job
     config.active_storage.variant_processor = :vips
 
     # 日本語に設定する
