@@ -4,6 +4,7 @@ class RiceBall < ApplicationRecord
     attachable.variant :index, resize_and_pad: [ 500, 500 ], preprocessed: true
     attachable.variant :show, resize_and_pad: [ 1000, 1000 ], preprocessed: true
   end
+  has_one_attached :ogp_image
   has_many :ingredients, dependent: :destroy
   has_many :steps, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
@@ -12,6 +13,8 @@ class RiceBall < ApplicationRecord
 
   validate :correct_image_type
   validate :correct_image_size
+
+  after_commit :generate_ogp_image, on: :create
 
   def self.ransackable_attributes(auth_object = nil)
     [ "title", "created_at", "updated_at", "user_id" ]
@@ -26,7 +29,7 @@ class RiceBall < ApplicationRecord
   def correct_image_type
     return unless image.attached?
 
-    acceptable_types = [ "image/jpeg", "image/png" ]
+    acceptable_types = [ "image/jpeg", "image/jpg", "image/png" ]
     unless acceptable_types.include?(image.content_type)
       errors.add(:image, :image_type_invalid)
     end
@@ -38,5 +41,9 @@ class RiceBall < ApplicationRecord
     if image.byte_size > 5.megabytes
       errors.add(:image, :image_size_invalid)
     end
+  end
+
+  def generate_ogp_image
+    GenerateOgpImageJob.perform_later(self)
   end
 end
