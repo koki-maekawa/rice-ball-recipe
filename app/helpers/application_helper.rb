@@ -9,6 +9,7 @@ module ApplicationHelper
       keywords: "おにぎり、おむすび",
       canonical: request.original_url,
       separator: "|",
+      icon: image_url("onigiri.png"),
       og: {
         site_name: :site,
         title: :title,
