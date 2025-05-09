@@ -10,6 +10,11 @@ class RiceBallsController < ApplicationController
 
   def show
     @rice_ball = RiceBall.find(params[:id])
+    image_url = @rice_ball.ogp_image.attached? ? url_for(@rice_ball.ogp_image) : image_url("default_ogp.png")
+    set_meta_tags(
+      og:      { image: image_url },
+      twitter: { image: image_url }
+    )
   end
 
   def new
