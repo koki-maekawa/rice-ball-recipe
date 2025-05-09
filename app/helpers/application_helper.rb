@@ -16,14 +16,14 @@ module ApplicationHelper
         description: :description,
         type: "website",
         url: request.original_url,
-        image: image_url("onigiri.png"),
+        image: image_url("horizontal.png"),
         local: "ja-JP"
       },
       # Twitter用の設定を個別で設定する
       twitter: {
         card: "summary_large_image",
         site: "@RiceBallRecipe",
-        image: image_url("onigiri.png")
+        image: image_url("horizontal.png")
       }
     }
   end
