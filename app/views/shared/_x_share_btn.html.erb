@@ -1,0 +1,16 @@
+<% case size %>
+<% when "index" %>
+  <%= link_to "https://twitter.com/share?url=https://rice-ball-recipe.com/rice_balls/#{rice_ball.id}&text=#{rice_ball.user.name}さんのおにぎりレシピです。%0a%0a「#{rice_ball.title}」%0a%0a",
+    target: "_blank",
+    rel: "noopener" do %>
+    <i class="fa-brands fa-square-x-twitter fa-lg"></i>
+  <% end %>
+<% when "show" %>
+  <%= link_to "https://twitter.com/share?url=https://rice-ball-recipe.com/rice_balls/#{rice_ball.id}&text=#{rice_ball.user.name}さんのおにぎりレシピです。%0a%0a「#{rice_ball.title}」%0a%0a",
+    class: "btn btn-xs sm:btn-sm md:btn-md btn-outline",
+    target: "_blank",
+    rel: "noopener" do %>
+    <span><%= t("defaults.x_share_btn") %></span>
+    <i class="fa-brands fa-x-twitter fa-xl"></i>
+  <% end %>
+<% end %>
