@@ -1,5 +1,16 @@
-envVarGroups:
-  - name: env
+services:
+  - type: web
+    name: rice-ball-recipe-web
+    runtime: docker
+    repo: https://github.com/koki-maekawa/rice-ball-recipe
+    plan: starter
+    region: singapore
+    dockerContext: .
+    dockerfilePath: ./Dockerfile
+    domains:
+      - rice-ball-recipe.com
+      - www.rice-ball-recipe.com
+    autoDeployTrigger: commit
     envVars:
       - key: PORT
         sync: false
@@ -8,33 +19,22 @@ envVarGroups:
       - key: RAILS_MASTER_KEY
         sync: false
 
-services:
-  - type: web
-    name: rice-ball-recipe-web
-    runtime: docker
-    repo: https://github.com/koki-maekawa/rice-ball-recipe
-    plan: starter
-    envVarGroups:
-     - env
-    region: singapore
-    dockerContext: .
-    dockerfilePath: ./Dockerfile
-    domains:
-    - rice-ball-recipe.com
-    - www.rice-ball-recipe.com
-    autoDeployTrigger: commit
-
   - type: worker
     name: rice-ball-recipe-worker
     runtime: docker
     repo: https://github.com/koki-maekawa/rice-ball-recipe
     plan: starter
-    envVarGroups:
-      - env
     region: singapore
     dockerContext: .
     dockerfilePath: ./Dockerfile
     startCommand: bin/delayed_job start
+    envVars:
+      - key: PORT
+        sync: false
+      - key: WEB_CONCURRENCY
+        sync: false
+      - key: RAILS_MASTER_KEY
+        sync: false
 
   - type: cron
     name: rice-ball-recipe-cron
@@ -42,9 +42,14 @@ services:
     repo: https://github.com/koki-maekawa/rice-ball-recipe
     plan: starter
     schedule: "0 21 1 * *"
-    envVarGroups:
-      - env
     region: singapore
     dockerContext: .
     dockerfilePath: ./Dockerfile
     startCommand: bundle exec rails sitemap:refresh
+    envVars:
+      - key: PORT
+        sync: false
+      - key: WEB_CONCURRENCY
+        sync: false
+      - key: RAILS_MASTER_KEY
+        sync: false
