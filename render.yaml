@@ -27,7 +27,8 @@ services:
     region: singapore
     dockerContext: .
     dockerfilePath: ./Dockerfile
-    startCommand: bin/delayed_job start
+    preDeployCommand: bin/rails db:prepare
+    dockerCommand: bin/delayed_job start
     envVars:
       - key: PORT
         sync: false
@@ -45,7 +46,8 @@ services:
     region: singapore
     dockerContext: .
     dockerfilePath: ./Dockerfile
-    startCommand: bundle exec rails sitemap:refresh
+    preDeployCommand: bin/rails db:prepare
+    dockerCommand: bundle exec rails sitemap:refresh
     envVars:
       - key: PORT
         sync: false
