@@ -28,7 +28,7 @@ services:
     dockerContext: .
     dockerfilePath: ./Dockerfile
     preDeployCommand: bin/rails db:prepare
-    dockerCommand: bin/delayed_job start
+    dockerCommand: bin/delayed_job run
     envVars:
       - key: PORT
         sync: false
