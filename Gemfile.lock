@@ -133,6 +133,7 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.4.3)
       railties (>= 6.0.0)
+    daemons (1.4.1)
     date (3.4.1)
     debug (1.10.0)
       irb (~> 1.10)
@@ -428,6 +429,7 @@ DEPENDENCIES
   capybara
   capybara-playwright-driver
   cssbundling-rails
+  daemons
   debug
   delayed_job_active_record
   devise

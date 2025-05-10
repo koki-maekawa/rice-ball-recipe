@@ -51,6 +51,7 @@ gem "aws-sdk-s3", require: false
 gem "sitemap_generator"
 
 gem "delayed_job_active_record"
+gem "daemons"
 
 gem "meta-tags"
 
