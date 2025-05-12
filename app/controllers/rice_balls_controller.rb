@@ -12,8 +12,8 @@ class RiceBallsController < ApplicationController
     @rice_ball = RiceBall.find(params[:id])
     if @rice_ball.ogp_image.attached?
       set_meta_tags(
-        og:      { image: url_for(@rice_ball.ogp_image) },
-        twitter: { image: url_for(@rice_ball.ogp_image) }
+        og:      { image: @rice_ball.ogp_image.url },
+        twitter: { image: @rice_ball.ogp_image.url }
       )
     end
   end
