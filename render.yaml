@@ -1,7 +1,7 @@
 databases:
   - name: rice-ball-recipe-db
-    databaseName: rice_ball_recipe-db
-    user: rice-ball-recipe-user
+    databaseName: rice_ball_recipe_db
+    user: rice_ball_recipe_user
     region: singapore
     plan: basic-256mb
 
