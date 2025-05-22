@@ -1,3 +1,10 @@
+databases:
+  - name: rice-ball-recipe-db
+    databaseName: rice_ball_recipe-db
+    user: rice-ball-recipe-user
+    region: singapore
+    plan: basic-256mb
+
 services:
   - type: web
     name: rice-ball-recipe-web
@@ -12,6 +19,10 @@ services:
       - www.rice-ball-recipe.com
     autoDeployTrigger: commit
     envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: rice-ball-recipe-db
+          property: connectionString
       - key: PORT
         sync: false
       - key: WEB_CONCURRENCY
@@ -30,6 +41,10 @@ services:
     preDeployCommand: bin/rails db:prepare
     dockerCommand: bundle exec rake jobs:work
     envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: rice-ball-recipe-db
+          property: connectionString
       - key: PORT
         sync: false
       - key: WEB_CONCURRENCY
@@ -49,6 +64,10 @@ services:
     preDeployCommand: bin/rails db:prepare
     dockerCommand: bundle exec rails sitemap:refresh
     envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: rice-ball-recipe-db
+          property: connectionString
       - key: PORT
         sync: false
       - key: WEB_CONCURRENCY
