@@ -85,4 +85,6 @@ test:
 #
 production:
   <<: *default
-  url: <%= Rails.application.credentials.dig(:neon, :database_url) %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
