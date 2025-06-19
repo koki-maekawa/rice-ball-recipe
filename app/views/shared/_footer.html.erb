@@ -1,7 +1,10 @@
-<footer class="bg-white">
-  <ul class="flex justify-center gap-6 p-4">
-    <li><%= link_to t("defaults.terms_of_service"), "https://kiyac.app/termsOfService/irLBMVrx7DpxxxTkrJTj", class: "link link-hover", target: "_blank", rel: "noopener" %></li>
-    <li><%= link_to t("defaults.privacy_policy"), "https://kiyac.app/privacypolicy/EUhTMocT4INUTEElzvoq", class: "link link-hover", target: "_blank", rel: "noopener" %></li>
-    <li><%= link_to t("shared.footer.x"), "https://x.com/RiceBallRecipe", class: "link link-hover", target: "_blank", rel: "noopener" %></li>
-  </ul>
+<footer class="footer bg-neutral text-neutral-content flex flex-col lg:flex-row gap-2 lg:gap-8 items-center justify-center text-sm md:text-base lg:text-lg p-2 md:p-3 lg:p-4">
+  <nav class="flex gap-2 md:gap-3 lg:gap-4">
+    <%= link_to t("defaults.terms_of_service"), "https://kiyac.app/termsOfService/irLBMVrx7DpxxxTkrJTj", class: "link link-hover", target: "_blank", rel: "noopener" %>
+    <%= link_to t("defaults.privacy_policy"), "https://kiyac.app/privacypolicy/EUhTMocT4INUTEElzvoq", class: "link link-hover", target: "_blank", rel: "noopener" %>
+    <%= link_to "https://x.com/RiceBallRecipe", class: "link link-hover", target: "_blank", rel: "noopener" do %>
+      <i class="fa-brands fa-x-twitter fa-lg"></i>
+    <% end %>
+  </nav>
+  <p>©2025 おにぎりレシピ - All right reserved</p>
 </footer>
