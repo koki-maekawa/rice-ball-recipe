@@ -9,11 +9,11 @@ class UsersController < ApplicationController
   end
 
   def created_index
-    @created_rice_balls = @user.rice_balls.includes(:image_attachment).order(created_at: :desc).page(params[:page]).per(8)
+    @created_rice_balls = @user.rice_balls.includes(:image_attachment).order(created_at: :desc).page(params[:page]).per(12)
   end
 
   def bookmarked_index
-    @bookmarked_rice_balls = @user.bookmarked_rice_balls.includes(:image_attachment, :user).order("bookmarks.created_at DESC").page(params[:page]).per(8)
+    @bookmarked_rice_balls = @user.bookmarked_rice_balls.includes(:image_attachment, :user).order("bookmarks.created_at DESC").page(params[:page]).per(12)
   end
 
   private
