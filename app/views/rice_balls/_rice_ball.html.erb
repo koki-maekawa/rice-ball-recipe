@@ -1,4 +1,4 @@
-<div class="card bg-base-100 shadow-lg max-w-xl overflow-hidden hover:border-primary hover:border">
+<div class="card bg-base-100 shadow-sm hover:border-primary hover:border">
   <%= link_to "", rice_ball_path(rice_ball), data: { turbo_frame: "_top" }, class: "absolute top-0 left-0 right-0 bottom-0" %>
   <figure>
     <% if rice_ball.image.attached? %>
@@ -7,12 +7,14 @@
       <%= image_tag "onigiri.png", class: "w-full h-40 object-cover" %>
     <% end %>
   </figure>
-  <div class="flex flex-col h-full p-2">
-    <h2 class="card-title line-clamp-2 flex-1">
-      <span class="text-xl font-bold"><%= rice_ball.title %></span>
+  <div class="flex flex-col p-2">
+    <h2 class="truncate">
+      <span class=" text-base sm:text-lg font-bold">
+        <%= rice_ball.title %>
+      </span>
     </h2>
-    <div class="self-end line-clamp-1 z-10">
-      <%= link_to user_path(user), data: { turbo_frame: "_top" }, class: "text-base font-bold" do %>
+    <div class="text-right truncate">
+      <%= link_to user_path(user), data: { turbo_frame: "_top" }, class: "relative z-10 link text-base sm:text-lg font-bold" do %>
         <%= t("defaults.created_by") %> <%= user.name %>
       <% end %>
     </div>
