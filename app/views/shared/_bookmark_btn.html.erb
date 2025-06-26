@@ -2,18 +2,22 @@
   <% bookmarked = current_user.already_bookmarked?(rice_ball) %>
   <% case size %>
   <% when "index" %>
-    <%= turbo_frame_tag dom_id(rice_ball, :bookmark) do %>
-      <%= link_to rice_ball_bookmarks_path(rice_ball), data: { turbo_method: bookmarked ? :delete : :post } do %>
-        <i class="<%= bookmarked ? "fa-solid" : "fa-regular" %> fa-bookmark fa-lg"></i>
+    <% if current_user != rice_ball.user %>
+      <%= turbo_frame_tag dom_id(rice_ball, :bookmark) do %>
+        <%= link_to rice_ball_bookmarks_path(rice_ball), data: { turbo_method: bookmarked ? :delete : :post } do %>
+          <i class="<%= bookmarked ? "fa-solid" : "fa-regular" %> fa-bookmark fa-lg"></i>
+        <% end %>
       <% end %>
     <% end %>
   <% when "show" %>
-    <%= turbo_frame_tag dom_id(rice_ball, :bookmark) do %>
-      <%= link_to rice_ball_bookmarks_path(rice_ball),
+    <% if current_user != rice_ball.user %>
+      <%= turbo_frame_tag dom_id(rice_ball, :bookmark) do %>
+        <%= link_to rice_ball_bookmarks_path(rice_ball),
                   data: { turbo_method: bookmarked ? :delete : :post },
                   class: "btn btn-sm md:btn-md btn-outline" do %>
-        <span><%= bookmarked ? t("defaults.bookmarked") : t("defaults.bookmark") %></span>
-        <i class="<%= bookmarked ? "fa-solid" : "fa-regular" %> fa-bookmark fa-xl"></i>
+          <span><%= bookmarked ? t("defaults.bookmarked") : t("defaults.bookmark") %></span>
+          <i class="<%= bookmarked ? "fa-solid" : "fa-regular" %> fa-bookmark fa-xl"></i>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
