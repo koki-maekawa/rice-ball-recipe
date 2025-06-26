@@ -1,73 +1,69 @@
-<div class="m-4 p-6 md:p-10 bg-base-100 shadow-lg rounded-box max-w-7xl w-full">
-  <div class="gap-6 grid grid-cols-1 sm:grid-cols-2">
+<div class="bg-base-100 shadow-sm rounded-box h-fit flex flex-col w-full gap-4 my-4 mx-2 sm:mx-4 md:mx-6 lg:mx-8 p-2 sm:p-3 md:p-4">
+  <div class="flex flex-col md:flex-row gap-4">
     <% if @rice_ball.image.attached? %>
       <figure>
-        <%= image_tag @rice_ball.image.variant(:show), class: "w-94 h-64" %>
+        <%= image_tag @rice_ball.image.variant(:show), class: "w-96 h-64" %>
       </figure>
     <% else %>
       <figure>
-        <%= image_tag "onigiri.png", class: "w-94 h-64" %>
+        <%= image_tag "onigiri.png", class: "w-96 h-64" %>
       </figure>
     <% end %>
-    <div class="space-y-4">
+    <div class="flex flex-col gap-2">
       <h2>
-        <span class="text-xl font-bold"><%= @rice_ball.title %></span>
+        <span class="text-lg sm:text-xl font-bold"><%= @rice_ball.title %></span>
       </h2>
-      <div class="z-10">
-        <%= link_to user_path(@rice_ball.user), class: "text-lg font-bold" do %>
+      <div>
+        <%= link_to user_path(@rice_ball.user), class: "link text-base sm:text-lg" do %>
           <%= t("defaults.created_by") %> <%= @rice_ball.user.name %>
         <% end %>
       </div>
       <% if @rice_ball.description %>
-        <div class="py-4">
-          <h3 class="text-lg font-bold"><%= RiceBall.human_attribute_name(:description) %></h3>
-          <p class="text-lg"><%= @rice_ball.description %></p>
+        <div>
+          <p class="text-base sm:text-lg"><%= @rice_ball.description %></p>
         </div>
       <% end %>
     </div>
-    <div>
-      <h3 class="text-lg font-bold"><%= Ingredient.model_name.human %></h3>
-      <ul class="list-none">
+  </div>
+  <div class="flex flex-col md:flex-row gap-4">
+    <div class="w-full max-w-xl bg-primary-content rounded-box p-2">
+      <h3 class="text-base sm:text-lg font-bold"><%= Ingredient.model_name.human %></h3>
+      <ul class="list-disc list-inside">
         <% @rice_ball.ingredients.each do |ingredient| %>
-          <li class="flex flex-wrap justify-between items-center py-2 border-b">
-            <span class="text-lg"><%= ingredient.name %></span>
-            <span class="text-lg font-bold"><%= ingredient.amount %></span>
+          <li class="border-b">
+            <span class="text-base sm:text-lg font-bold"><%= ingredient.name %></span>
+            <span class="text-base sm:text-lg"><%= ingredient.amount %></span>
           </li>
         <% end %>
       </ul>
     </div>
     <% if @rice_ball.steps.present? %>
-      <div>
-        <h3 class="text-lg font-bold"><%= Step.model_name.human %></h3>
-        <ul class="list-none">
+      <div class="w-full max-w-xl bg-secondary-content rounded-box p-2">
+        <h3 class="text-base sm:text-lg font-bold"><%= Step.model_name.human %></h3>
+        <ul class="list-decimal list-inside">
           <% @rice_ball.steps.order(:step_number).each do |step| %>
-            <li class="flex flex-wrap py-2 border-b gap-4">
-              <span class="text-lg"><%= step.step_number %></span>
-              <span class="text-lg"><%= step.description %></span>
+            <li class="border-b">
+              <span class="text-base sm:text-lg"><%= step.description %></span>
             </li>
           <% end %>
         </ul>
       </div>
     <% end %>
   </div>
-  <ul class="flex justify-end gap-2 items-center mt-6">
+  <div class="flex flex-wrap gap-4 justify-end">
+    <div class="flex gap-2">
+      <%= render "shared/bookmark_btn", rice_ball: @rice_ball, size: "show" %>
+      <%= render "shared/x_share_btn", rice_ball: @rice_ball, size: "show" %>
+    </div>
     <% if current_user == @rice_ball.user %>
-      <li>
-        <%= link_to t(".edit"), edit_rice_ball_path(@rice_ball), class: "btn btn-xs sm:btn-sm md:btn-md btn-primary btn-outline" %>
-      </li>
-      <li>
+      <div class="flex gap-2 self-end">
+        <%= link_to t(".edit"), edit_rice_ball_path(@rice_ball), class: "btn btn-sm md:btn-md btn-primary" %>
         <%= link_to t(".destroy"), rice_ball_path(@rice_ball),
               data: {
                 turbo_method: "delete",
                 turbo_confirm: t(".destroy_confirm") },
-              class: "btn btn-xs sm:btn-sm md:btn-md btn-error btn-outline" %>
-      </li>
+              class: "btn btn-sm md:btn-md btn-error" %>
+      </div>
     <% end %>
-    <li>
-      <%= render "shared/bookmark_btn", rice_ball: @rice_ball, size: "show" %>
-    </li>
-    <li>
-      <%= render "shared/x_share_btn", rice_ball: @rice_ball, size: "show" %>
-    </li>
-  </ul>
+  </div>
 </div>
