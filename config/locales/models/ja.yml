@@ -7,10 +7,11 @@ ja:
     attributes:
       rice_ball:
         title: "おにぎりのタイトル"
-        description: "説明文"
-        image: "画像"
+        description: "説明文(任意)"
+        image: "画像(任意)"
       ingredient:
         name: "材料・調味料"
         amount: "量"
       step:
-        description: "作り方"
+        description: "作り方（任意）"
+  

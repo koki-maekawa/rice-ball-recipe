@@ -1,47 +1,35 @@
-<div class="flex flex-col p-4 gap-12 max-w-7xl w-full">
-  <div class="bg-base-100 shadow-lg rounded-box p-4">
-    <h2 class="text-center">
-      <%= link_to user_path(@user), class: "font-bold text-lg sm:text-xl md:text-xl" do %>
-        <%= @user.name %>
-      <% end %>
-    </h2>
-  </div>
-  <div>
-    <h3><span class="font-bold text-lg sm:text-xl md:text-xl"><%= t("defaults.created_recipe") %></span></h3>
+<div class="flex flex-col w-full items-center gap-4 my-4 mx-2 sm:mx-4 md:mx-6 lg:mx-8">
+  <h2 class="w-full text-center">
+    <span class="text-sm sm:text-base md:text-lg font-bold"><%= @user.name %></span>
+  </h2>
+  <div class="w-full">
+    <h3><span class="text-sm sm:text-base md:text-lg font-bold"><%= t("defaults.created_recipe") %></span></h3>
     <% if @created_rice_balls_count >= 1 %>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
         <% @created_rice_balls.each do |rice_ball| %>
           <%= render "rice_balls/rice_ball", rice_ball: rice_ball, user: rice_ball.user %>
         <% end %>
       </div>
       <% if @created_rice_balls_count >= 5 %>
-        <div class="flex justify-center">
-          <%= link_to t(".created_index"), created_index_user_path(@user), class: "btn btn-xs sm:btn-sm md:btn-md btn-neutral btn-wide w-full btn-white mt-6" %>
-        </div>
+        <div><%= link_to t(".created_index"), created_index_user_path(@user), class: "btn btn-block btn-neutral mt-4" %></div>
       <% end %>
     <% else %>
-      <div class="flex justify-center">
-        <span class="text-sm sm:text-base md:text-lg"><%= link_to t(".no_created_index") %></span>
-      </div>
+      <div class="h-40"><span class="text-sm sm:text-base md:text-lg"><%= t(".no_created_index") %></span></div>
     <% end %>
   </div>
-  <div>
-    <h3><span class="font-bold text-lg sm:text-xl md:text-xl"><%= t("defaults.bookmark") %></span></h3>
+  <div class="w-full">
+    <h3><span class="text-sm sm:text-base md:text-lg font-bold"><%= t("defaults.bookmark") %></span></h3>
     <% if @bookmarked_rice_balls_count >= 1 %>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
         <% @bookmarked_rice_balls.each do |rice_ball| %>
           <%= render "rice_balls/rice_ball", rice_ball: rice_ball, user: rice_ball.user %>
         <% end %>
       </div>
       <% if @bookmarked_rice_balls_count >= 5 %>
-        <div class="flex justify-center">
-          <%= link_to t(".bookmarked_index"), bookmarked_index_user_path(@user), class: "btn btn-xs sm:btn-sm md:btn-md btn-neutral btn-wide w-full mt-6" %>
-        </div>
+        <div class="w-full"><%= link_to t(".bookmarked_index"), bookmarked_index_user_path(@user), class: "btn btn-block btn-neutral mt-4" %></div>
       <% end %>
     <% else %>
-      <div class="flex justify-center">
-        <span class="text-sm sm:text-base md:text-lg"><%= link_to t(".no_bookmarked_index") %></span>
-      </div>
+      <div class="h-40"><span class="text-sm sm:text-base md:text-lg"><%= t(".no_bookmarked_index") %></span></div>
     <% end %>
   </div>
 </div>

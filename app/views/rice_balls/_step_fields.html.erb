@@ -1,14 +1,18 @@
-<div class="nested-fields" data-step-forms-target="stepFields">
-  <div class="bg-accent w-12 rounded-full p-2 sm:px-3 md:px-4 flex justify-center items-center"><span class="text-white text-sm sm:text-lg md:text-xl"></span></div>
-  <div class="flex">
-    <div class="form-control w-full">
-      <%= f.text_area :description, class: "textarea textarea-xs sm:textarea-sm md:textarea-md textarea-bordered w-full", placeholder: t("defaults.step_description_placeholder") %>
-    </div>
-    <div class="form-control w-12 self-center">
-      <%= link_to "#", data: { action: "click->step-forms#removeForm" }, class: "btn btn-xs sm:btn-sm md:btn-md btn-error" do %>
-        <i class="fa-solid fa-xmark"></i>
-      <% end %>
-    </div>
+<div class="w-full flex justify-center nested-fields" data-step-forms-target="stepFields">
+  <div class="w-full flex">
+    <span class="self-center font-bold text-sm sm:text-base md:text-md lg:text-lg p-4"></span>
+    <%= f.text_area :description, class: "textarea textarea-sm sm:textarea-md textarea-bordered w-full max-w-xl", placeholder: t("defaults.step_description_placeholder") %>
+    <%= button_tag type: "button", data: { action: "click->step-forms#removeForm" }, class: "self-center btn btn-square btn-sm sm:btn-md btn-error" do %>
+      <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    <% end %>
   </div>
   <%= f.hidden_field :_destroy %>
   <%= f.hidden_field :step_number %>

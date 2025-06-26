@@ -1,24 +1,53 @@
-<aside class="m-4 p-4 bg-white shadow-lg rounded-box">
-  <ul class="menu space-y-2 font-bold">
+<aside class="sticky top-[88px] z-20 hidden lg:block w-64 bg-base-100 h-fit rounded-box shadow-sm p-2 my-4">
+  <ul class="menu gap-3 font-bold text-sm">
     <li>
-      <%= link_to new_rice_ball_path, class: "flex items-center space-x-2" do %>
-        <i class="fa-solid fa-utensils"></i>
-        <span><%= t("defaults.create_rice_ball") %></span>
-      <% end %>
-    </li>
-    <li>
-      <%= link_to rice_balls_path, class: "flex items-center space-x-2" do %>
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <span><%= t("defaults.search_rice_ball") %></span>
+      <%= link_to rice_balls_path, class: "#{'active' if current_page?(rice_balls_path) || current_page?(root_path)}" do %>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="currentColor"
+          viewBox="0 0 24 24">
+          <path
+            fill-rule="evenodd"
+            d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <span class="ml-2"><%= t("defaults.search_rice_ball") %></span>
       <% end %>
     </li>
     <% if user_signed_in? %>
       <li>
-        <%= link_to user_path(current_user), class: "flex items-center space-x-3" do %>
-          <i class="fa-solid fa-person"></i>
-          <span><%= t("defaults.my_page") %></span>
+        <%= link_to user_path(current_user), class: "#{'active' if current_page?(user_path(current_user)) || current_page?(created_index_user_path(current_user)) || current_page?(bookmarked_index_user_path(current_user))}" do %>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+          <span class="pl-2"><%= t("defaults.my_page") %></span>
         <% end %>
       </li>
     <% end %>
+    <li>
+      <%= link_to new_rice_ball_path, class: "#{'active' if current_page?(new_rice_ball_path)}" do %>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="h-5 w-5">
+          <path
+            fill-rule="evenodd"
+            d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <span class="ml-2"><%= t("defaults.create_rice_ball") %></span>
+      <% end %>
+    </li>
   </ul>
 </aside>

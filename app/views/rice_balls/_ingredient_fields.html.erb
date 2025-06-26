@@ -1,14 +1,16 @@
-<div class="flex nested-fields" data-ingredient-forms-target="ingredientFields">
-  <div class="form-control w-2/3">
-    <%= f.text_field :name, class: "input input-xs sm:input-sm md:input-md input-bordered w-full", placeholder: t("defaults.ingredient_name_placeholder") %>
-  </div>
-  <div class="form-control w-1/3">
-    <%= f.text_field :amount, class: "input input-xs sm:input-sm md:input-md input-bordered w-full", placeholder: t("defaults.ingredient_amount_placeholder") %>
-  </div>
-  <div class="form-control w-12">
-    <%= link_to "#", data: { action: "click->ingredient-forms#removeForm" }, class: "btn btn-xs sm:btn-sm md:btn-md btn-error" do %>
-      <i class="fa-solid fa-xmark"></i>
-    <% end %>
-    <%= f.hidden_field :_destroy %>
-  </div>
+<div class="flex w-full nested-fields" data-ingredient-forms-target="ingredientFields">
+  <%= f.text_field :name, class: "input input-sm sm:input-md input-bordered w-2/3", placeholder: t("defaults.ingredient_name_placeholder") %>
+  <%= f.text_field :amount, class: "input input-sm sm:input-md input-bordered w-1/3", placeholder: t("defaults.ingredient_amount_placeholder") %>
+  <%= button_tag type: "button", data: { action: "click->ingredient-forms#removeForm" }, class: "btn btn-square btn-sm sm:btn-md btn-error" do %>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="size-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+    </svg>
+  <% end %>
+  <%= f.hidden_field :_destroy %>
 </div>

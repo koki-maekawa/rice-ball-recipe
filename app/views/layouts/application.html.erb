@@ -25,23 +25,20 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= display_meta_tags(default_meta_tags) %>
   </head>
-  <body class="h-screen flex flex-col">
+  <body class="bg-base-300 min-h-screen flex flex-col items-center">
     <% if user_signed_in? %>
       <%= render "shared/header" %>
     <% else %>
       <%= render "shared/before_login_header" %>
     <% end %>
     <%= render "shared/flash_message" %>
-    <div class="flex-1 bg-base-200 overflow-auto">
-      <div class="flex">
-        <div class="hidden w-1/5 lg:block">
-          <%= render "shared/sidebar" %>
-        </div>
-        <div class="w-full lg:w-4/5 flex justify-center">
-          <%= yield %>
-        </div>
+    <div class="flex w-full max-w-screen-xl flex-grow">
+      <%= render "shared/sidebar" %>
+      <div class="w-full flex justify-center">
+        <%= yield %>
       </div>
     </div>
     <%= render "shared/footer" %>
+    <%= render "shared/bottom_navigation" %>
   </body>
 </html>

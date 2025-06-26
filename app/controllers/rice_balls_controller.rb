@@ -26,7 +26,7 @@ class RiceBallsController < ApplicationController
     @form = RecipeForm.new(user: @user, attributes: form_params)
 
     if @form.save
-      redirect_to rice_balls_path, notice: t(".success")
+      redirect_to rice_ball_path(@form.rice_ball), notice: t(".success")
     else
       render turbo_stream: [
         turbo_stream.remove("exist_form_errors"),

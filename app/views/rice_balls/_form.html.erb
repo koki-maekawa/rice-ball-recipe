@@ -1,21 +1,22 @@
-<%= form_with(model: recipe_form, url: recipe_form.persisted? ? rice_ball_path(recipe_form) : rice_balls_path, class: "m-4 p-6 md:p-10 bg-base-100 shadow-lg rounded-box space-y-8 max-w-7xl w-full", id: "form_errors")  do |form| %>
+<%= form_with(model: recipe_form, url: recipe_form.persisted? ? rice_ball_path(recipe_form) : rice_balls_path, class: "bg-base-100 shadow-sm rounded-box h-fit flex flex-col w-full items-center gap-2 my-4 mx-2 sm:mx-4 md:mx-6 lg:mx-8 p-2 sm:p-3 md:p-4", id: "form_errors")  do |form| %>
   <%= form.fields_for(:rice_ball_attributes, recipe_form.rice_ball) do |rice_ball_fields| %>
-    <div class="form-control">
-      <%= rice_ball_fields.label :title, class: "label text-sm sm:text-lg md:text-xl font-bold" %>
-      <%= rice_ball_fields.text_field :title, class: "input input-xs sm:input-sm md:input-md input-bordered w-full" %>
+    <div class="w-full">
+      <%= rice_ball_fields.label :title, class: "label text-sm sm:text-base md:text-lg font-bold" %>
+      <%= rice_ball_fields.text_field :title, class: "input input-sm sm:input-md input-bordered w-full max-w-xl" %>
     </div>
-    <div class="form-control">
-      <%= rice_ball_fields.label :description, class: "label text-sm sm:text-lg md:text-xl font-bold" %>
-      <%= rice_ball_fields.text_area :description, class: "textarea textarea-xs sm:textarea-sm md:textarea-md textarea-bordered w-full" %>
+    <div class="w-full">
+      <%= rice_ball_fields.label :description, class: "label text-sm sm:text-base md:text-lg font-bold" %>
+      <%= rice_ball_fields.text_area :description, class: "textarea textarea-sm sm:textarea-md textarea-bordered w-full max-w-xl" %>
     </div>
-    <div class="form-control">
-      <%= rice_ball_fields.label :image, class: "label text-sm sm:text-lg md:text-xl font-bold" %>
-      <%= rice_ball_fields.file_field :image, class: "file-input file-input-xs sm:file-input-sm md:file-input-md file-input-bordered w-full" %>
+    <div class="w-full">
+      <%= rice_ball_fields.label :image, class: "label text-sm sm:text-base md:text-lg font-bold" %>
+      <%= rice_ball_fields.file_field :image, class: "file-input file-input-sm sm:file-input-md file-input-bordered w-full max-w-xl" %>
     </div>
   <% end %>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 my-4">
     <div class="w-full" data-controller="ingredient-forms">
-      <div class="text-sm sm:text-lg md:text-xl font-semibold"><%= Ingredient.model_name.human %></div>
+      <div class="text-sm sm:text-base md:text-lg font-bold"><%= Ingredient.model_name.human %></div>
+      <%# 材料入力フォーム追加内容 %>
       <template data-ingredient-forms-target="Template">
         <%= form.fields_for(:ingredients_attributes, Ingredient.new, index: "RECORD") do |f| %>
           <%= render "ingredient_fields", f: f %>
@@ -28,11 +29,13 @@
         <% end %>
       <% end %>
       <div data-ingredient-forms-target="addIngredientFormArea">
-        <%= link_to t("defaults.add_ingredient_form"), "#", data: { action: "click->ingredient-forms#addIngredientForm" }, class: "btn btn-xs sm:btn-sm md:btn-md btn-block w-full mt-6" %>
+        <%= link_to t("defaults.add_ingredient_form"), "#", data: { action: "click->ingredient-forms#addIngredientForm" }, class: "btn btn-sm sm:btn-md btn-block w-full " %>
       </div>
     </div>
     <div class="w-full" data-controller="step-forms">
-      <div class="text-sm sm:text-lg md:text-xl font-semibold"><%= Step.model_name.human %></div>
+      <div class="text-sm sm:text-base md:text-lg font-bold"><%= Step.human_attribute_name(:description) %>
+</div>
+      <%# 作り方入力フォーム追加内容 %>
       <template data-step-forms-target="Template">
         <%= form.fields_for(:steps_attributes, Step.new, index: "RECORD") do |f| %>
           <%= render "step_fields", f: f %>
@@ -45,11 +48,11 @@
         <% end %>
       <% end %>
       <div data-step-forms-target="addStepFormArea">
-        <%= link_to t("defaults.add_step_form"), "#", data: { action: "click->step-forms#addStepForm" }, class: "btn btn-xs sm:btn-sm md:btn-md btn-block w-full mt-6" %>
+        <%= link_to t("defaults.add_step_form"), "#", data: { action: "click->step-forms#addStepForm" }, class: "btn btn-sm sm:btn-md btn-block w-full " %>
       </div>
     </div>
   </div>
-  <div class="mt-6 flex justify-end">
-    <%= form.submit t("defaults.recipe_submit"), class: "btn btn-xs sm:btn-sm md:btn-md btn-primary w-32" %>
+  <div class="self-end">
+    <%= form.submit t("defaults.recipe_submit"), class: "btn btn-sm sm:btn-md btn-primary" %>
   </div>
 <% end %>
