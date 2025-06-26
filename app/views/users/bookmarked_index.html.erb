@@ -1,20 +1,18 @@
-<div class="flex flex-col p-4 gap-12 max-w-7xl w-full">
-  <div class="bg-base-100 shadow-lg rounded-box p-4">
-    <h2 class="text-center">
-      <%= link_to user_path(@user), class: "font-bold text-lg sm:text-xl md:text-xl" do %>
-        <%= @user.name %>
-      <% end %>
-    </h2>
-  </div>
-  <div>
-    <h3><span class="font-bold text-lg sm:text-xl md:text-xl"><%= t("defaults.bookmark") %></span></h3>
-    <%= turbo_frame_tag "rice-balls-list" do %>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+<div class="flex flex-col w-full items-center gap-4 my-4 mx-2 sm:mx-4 md:mx-6 lg:mx-8">
+  <h2 class="w-full text-center">
+    <%= link_to user_path(@user), class: "text-sm sm:text-base md:text-lg font-bold" do %>
+      <%= @user.name %>
+    <% end %>
+  </h2>
+  <div class="w-full">
+    <h3><span class="text-sm sm:text-base md:text-lg font-bold"><%= t("defaults.bookmark") %></span></h3>
+    <%= turbo_frame_tag "rice-balls-list", class: "w-full" do %>
+      <div class="gap-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <% @bookmarked_rice_balls.each do |rice_ball| %>
           <%= render "rice_balls/rice_ball", rice_ball: rice_ball, user: rice_ball.user %>
         <% end %>
       </div>
-      <div class="flex justify-center">
+      <div>
         <%= paginate @bookmarked_rice_balls %>
       </div>
     <% end %>
