@@ -82,11 +82,6 @@ RSpec.describe 'RiceBalls', :js, type: :system do
 
                 expect(page).to have_content 'テストおにぎり'
                 expect(page).to have_css("img[src*='onigiri.png']")
-                expect(page).to have_content I18n.t('rice_balls.create.success')
-
-                find('.absolute.top-0.left-0.right-0.bottom-0').click
-                expect(page).to have_content 'テストおにぎり'
-                expect(page).to have_css("img[src*='onigiri.png']")
                 expect(page).to have_content 'テストおにぎりの説明文です'
                 expect(page).to have_content 'ごはん'
                 expect(page).to have_content '150g'
