@@ -52,7 +52,7 @@
   </div>
   <div class="flex flex-wrap gap-4 justify-end">
     <div class="flex gap-2">
-      <%= render "shared/bookmark_btn", rice_ball: @rice_ball, size: "show" %>
+      <%= render "shared/bookmark", rice_ball: @rice_ball, size: "show" %>
       <%= render "shared/x_share_btn", rice_ball: @rice_ball, size: "show" %>
     </div>
     <% if current_user == @rice_ball.user %>

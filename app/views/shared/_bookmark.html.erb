@@ -1,0 +1,25 @@
+<% if user_signed_in? %>
+  <% bookmarked = current_user.already_bookmarked?(rice_ball) %>
+  <% case size %>
+  <% when "index" %>
+  <% if current_user != rice_ball.user %>
+    <div id="<%= dom_id(rice_ball, :bookmark) %>">
+      <%= link_to rice_ball_bookmarks_path(rice_ball, size: :index),
+                  data: { turbo_method: bookmarked ? :delete : :post } do %>
+        <i class="<%= bookmarked ? "fa-solid" : "fa-regular" %> fa-bookmark fa-lg"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <% when "show" %>
+  <% if current_user != rice_ball.user %>
+    <div id="<%= dom_id(rice_ball, :bookmark) %>">
+      <%= link_to rice_ball_bookmarks_path(rice_ball, size: :show),
+                  data: { turbo_method: bookmarked ? :delete : :post },
+                  class: "btn btn-sm md:btn-md btn-outline" do %>
+        <span><%= bookmarked ? t("defaults.bookmarked") : t("defaults.bookmark") %></span>
+        <i class="<%= bookmarked ? "fa-solid" : "fa-regular" %> fa-bookmark fa-xl"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <% end %>
+<% end %>
