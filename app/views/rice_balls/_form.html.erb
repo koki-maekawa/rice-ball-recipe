@@ -34,7 +34,7 @@
     </div>
     <div class="w-full" data-controller="step-forms">
       <div class="text-sm sm:text-base md:text-lg font-bold"><%= Step.human_attribute_name(:description) %>
-</div>
+      </div>
       <%# 作り方入力フォーム追加内容 %>
       <template data-step-forms-target="Template">
         <%= form.fields_for(:steps_attributes, Step.new, index: "RECORD") do |f| %>
