@@ -18,8 +18,8 @@
         <%= t("defaults.created_by") %> <%= user.name %>
       <% end %>
     </div>
-    <div class="self-end z-10">
-      <%= render "shared/bookmark_btn", rice_ball:, size: "index" %>
+    <div class="self-end flex gap-2 z-10">
+      <%= render "shared/bookmark", rice_ball:, size: "index" %>
       <%= render "shared/x_share_btn", rice_ball:, size: "index" %>
     </div>
   </div>
