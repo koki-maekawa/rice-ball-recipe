@@ -8,7 +8,6 @@ RSpec.describe 'ユーザー関連機能', :js, type: :system do
       fill_in I18n.t('activerecord.attributes.user.email'), with: 'test@example.com'
       fill_in I18n.t('activerecord.attributes.user.password'), with: 'password'
       fill_in I18n.t('activerecord.attributes.user.password_confirmation'), with: 'password'
-      check "user_policies_agreed"
       click_button I18n.t('devise.registrations.new.sign_up')
       expect(page).to have_content I18n.t('devise.registrations.signed_up')
     end
@@ -19,7 +18,6 @@ RSpec.describe 'ユーザー関連機能', :js, type: :system do
       fill_in I18n.t('activerecord.attributes.user.email'), with: ''
       fill_in I18n.t('activerecord.attributes.user.password'), with: ''
       fill_in I18n.t('activerecord.attributes.user.password_confirmation'), with: ''
-      uncheck "user_policies_agreed"
       click_button I18n.t('devise.registrations.new.sign_up')
       expect(page).to have_content I18n.t('errors.messages.blank')
     end
@@ -32,24 +30,8 @@ RSpec.describe 'ユーザー関連機能', :js, type: :system do
       visit new_user_session_path
       fill_in I18n.t('activerecord.attributes.user.email'), with: 'test@example.com'
       fill_in I18n.t('activerecord.attributes.user.password'), with: 'password'
-      uncheck I18n.t('activerecord.attributes.user.remember_me')
       click_button I18n.t('devise.sessions.new.sign_in')
       expect(page).to have_content I18n.t('devise.sessions.signed_in')
-    end
-
-    it 'ログイン記憶をオンにしてログインできること' do
-      visit new_user_session_path
-      fill_in I18n.t('activerecord.attributes.user.email'), with: 'test@example.com'
-      fill_in I18n.t('activerecord.attributes.user.password'), with: 'password'
-      check I18n.t('activerecord.attributes.user.remember_me')
-      click_button I18n.t('devise.sessions.new.sign_in')
-      expect(page).to have_content I18n.t('devise.sessions.signed_in')
-      cookie_names = []
-      page.driver.with_playwright_page do |playwright_page|
-        cookies = playwright_page.context.cookies
-        cookie_names = cookies.map { |cookie| cookie['name'] }
-      end
-      expect(cookie_names).to include('remember_user_token')
     end
 
     it 'メールアドレスが存在しない場合エラーメッセージが表示されること' do

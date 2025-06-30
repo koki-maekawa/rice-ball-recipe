@@ -25,19 +25,25 @@
       <%= f.label :password_confirmation, class: "label text-sm sm:text-base md:text-lg" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input input-sm sm:input-md input-bordered w-full" %>
     </div>
-    <div class="flex gap-2">
-      <%= f.check_box :policies_agreed, class: "checkbox" %>
-      <%= f.label :policies_agreed do %>
-        <%= t(".policies_agreed",
-                  terms_url: link_to(t("defaults.terms_of_service"), "https://kiyac.app/termsOfService/irLBMVrx7DpxxxTkrJTj", class: "link link-primary text-sm sm:text-base md:text-lg", target: "_blank", rel: "noopener"),
-                  privacy_url: link_to(t("defaults.privacy_policy"), "https://kiyac.app/privacypolicy/EUhTMocT4INUTEElzvoq", class: "link link-primary text-sm sm:text-base md:text-lg", target: "_blank", rel: "noopener")).html_safe %>
-      <% end %>
-    </div>
     <div>
       <%= f.submit t(".sign_up"), class: "w-full btn btn-sm sm:btn-md btn-primary" %>
     </div>
   <% end %>
   <div class="mt-4 text-sm sm:text-base md:text-lg">
     <%= render "devise/shared/links" %>
+  </div>
+  <div class="divider my-4">または</div>
+  <div class="my-4">
+    <%= button_to user_twitter2_omniauth_authorize_path,
+                data: { turbo: false },
+                class: "btn btn-sm sm:btn-md w-full bg-black text-white border-black" do %>
+      <svg aria-label="X logo" width="16" height="12" viewBox="0 0 300 271" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z" /></svg>
+      Login with X
+    <% end %>
+  </div>
+  <div class="text-left text-xs sm:text-sm md:text-base">
+    <%= t(".policies_agreed",
+              terms_url: link_to(t("defaults.terms_of_service"), "https://kiyac.app/termsOfService/irLBMVrx7DpxxxTkrJTj", class: "link link-primary text-sm sm:text-base md:text-lg", target: "_blank", rel: "noopener"),
+              privacy_url: link_to(t("defaults.privacy_policy"), "https://kiyac.app/privacypolicy/EUhTMocT4INUTEElzvoq", class: "link link-primary text-sm sm:text-base md:text-lg", target: "_blank", rel: "noopener")).html_safe %>
   </div>
 </div>

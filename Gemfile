@@ -39,6 +39,9 @@ gem "image_processing", "~> 1.2"
 # login
 gem "devise"
 gem "devise-i18n"
+gem "omniauth"
+gem "omniauth-twitter2"
+gem "omniauth-rails_csrf_protection"
 
 # pagination
 gem "kaminari"
