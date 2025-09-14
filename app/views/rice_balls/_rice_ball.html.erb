@@ -18,6 +18,13 @@
         <%= t("defaults.created_by") %> <%= user.name %>
       <% end %>
     </div>
+    <% if rice_ball.tags.any? %>
+      <div class="truncate z-10">
+        <% rice_ball.tags.each do |tag| %>
+            <%= link_to tag.name, tag_path(tag), class: "badge badge-md sm:badge-lg badge-primary mr-1", data: { turbo: false } %>
+        <% end %>
+      </div>
+    <% end %>
     <div class="self-end flex gap-2 z-10">
       <%= render "shared/bookmark", rice_ball:, size: "index" %>
       <%= render "shared/x_share_btn", rice_ball:, size: "index" %>

@@ -23,6 +23,13 @@
           <p class="text-base sm:text-lg"><%= @rice_ball.description %></p>
         </div>
       <% end %>
+      <% if @rice_ball.tags.any? %>
+        <div>
+          <% @rice_ball.tags.each do |tag| %>
+              <%= link_to tag.name, tag_path(tag), class: "badge badge-md sm:badge-lg badge-primary mr-1 mb-1" %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="flex flex-col md:flex-row gap-4">
