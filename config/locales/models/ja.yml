@@ -1,4 +1,8 @@
 ja:
+  activemodel:
+    attributes:
+      recipe_form:
+        tag_names: "タグ名(任意)"
   activerecord:
     models:
       rice_ball: "おにぎりレシピ"
@@ -14,4 +18,3 @@ ja:
         amount: "量"
       step:
         description: "作り方（任意）"
-  
