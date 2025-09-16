@@ -10,6 +10,7 @@ Rails.application.configure do
     Bullet.add_footer    = true
     Bullet.add_safelist type: :n_plus_one_query, class_name: "RiceBall", association: :user
     Bullet.add_safelist type: :unused_eager_loading, class_name: "RiceBall", association: :user
+    Bullet.add_safelist type: :unused_eager_loading, class_name: "RiceBall", association: :rice_ball_tags
   end
 
   # Settings specified here will take precedence over those in config/application.rb.
