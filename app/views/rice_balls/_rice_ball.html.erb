@@ -21,7 +21,7 @@
     <% if rice_ball.tags.any? %>
       <div class="truncate z-10">
         <% rice_ball.tags.each do |tag| %>
-            <%= link_to tag.name, tag_path(tag), class: "badge badge-md sm:badge-lg badge-primary mr-1", data: { turbo: false } %>
+          <%= link_to tag.name, tag_path(tag), class: "badge badge-md sm:badge-lg badge-primary mr-1", data: { turbo: false } %>
         <% end %>
       </div>
     <% end %>
