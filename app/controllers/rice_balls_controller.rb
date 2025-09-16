@@ -5,7 +5,7 @@ class RiceBallsController < ApplicationController
 
   def index
     @q = RiceBall.ransack(params[:q])
-    @rice_balls = @q.result(distinct: true).includes(:user, :image_attachment).order(created_at: :desc).page(params[:page]).per(12)
+    @rice_balls = @q.result(distinct: true).includes(:user, :image_attachment, :tags).order(created_at: :desc).page(params[:page]).per(12)
   end
 
   def show
@@ -68,9 +68,11 @@ class RiceBallsController < ApplicationController
     end
 
     def form_params
-      params.require(:recipe_form).permit(rice_ball_attributes: %i[title description image],
-                                       ingredients_attributes: %i[id name amount _destroy],
-                                       steps_attributes: %i[id description step_number _destroy],
-                                       )
+      params.require(:recipe_form).permit(
+        :tag_names,
+        rice_ball_attributes: %i[title description image],
+        ingredients_attributes: %i[id name amount _destroy],
+        steps_attributes: %i[id description step_number _destroy]
+      )
     end
 end
